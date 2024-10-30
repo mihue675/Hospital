@@ -5,8 +5,7 @@ Proyecto web desarrollado para la Universidad Católica de Santiago del Estero, 
 ## Universidad Católica de Santiago del Estero
 
 **Facultad de Ciencias para la Innovación y el Desarrollo**  
-**Ingeniería en Informática - Año Académico 2024**
-**Programación I**
+**Ingeniería en Informática - Programacion I - 2024**
 
 ## Objetivos del Proyecto
 
