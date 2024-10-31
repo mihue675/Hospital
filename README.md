@@ -86,11 +86,11 @@ Esta aplicación web permite al hospital gestionar el inventario y uso de sus eq
 - **Extensiones de PHP**: `PDO`, `mbstring`, `json`, entre otras
 
 ## Paleta de colores
-Verde Azulado (#00796B): Para los elementos principales, como la barra de navegación o botones destacados, transmite frescura y calma.
-Azul Suave (#80CBC4): Ideal para fondos de secciones y tarjetas de información, da un aspecto limpio y accesible.
-Gris Claro (#ECEFF1): Excelente para fondos generales, ayuda a que la página luzca ordenada y sin ruido visual.
-Blanco Puro (#FFFFFF): Para el fondo de áreas de texto, formularios y bordes, haciendo que el contenido sea legible y espacioso.
-Gris Carbón (#37474F): Para los textos principales y titulares, aporta claridad y un contraste profesional sin ser demasiado oscuro.
+- **Verde Azulado (#00796B): Para los elementos principales, como la barra de navegación o botones destacados, transmite frescura y calma.
+- **Azul Suave (#80CBC4): Ideal para fondos de secciones y tarjetas de información, da un aspecto limpio y accesible.
+- **Gris Claro (#ECEFF1): Excelente para fondos generales, ayuda a que la página luzca ordenada y sin ruido visual.
+- **Blanco Puro (#FFFFFF): Para el fondo de áreas de texto, formularios y bordes, haciendo que el contenido sea legible y espacioso.
+- **Gris Carbón (#37474F): Para los textos principales y titulares, aporta claridad y un contraste profesional sin ser demasiado oscuro.
 
 ## Instalación
 
