@@ -12,7 +12,6 @@ if (isset($_SESSION['idUsuario'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital - Iniciar Sesión</title>
-    <link rel="stylesheet" href="registrarse.css">
 </head>
 
 <?php
@@ -26,30 +25,20 @@ if (isset($_POST['btnIniciarSesion']) && $_POST['txtEmail'] != "" && $_POST['txt
 
 ?>
 
-
-
 <body>
-    <div class="div-Todo"> <! necesitas un div que contenga los paneles, dentro del panel pones en uno de esos el forumlario, el formulario ta dividido en 2 divs />
-        <div class="panel-izquierdo">
-            <h2>¡Bienvenido!</h2>
-            <p>Si no tiene una cuenta aún, por favor regístrese.</p>
-            <button onclick="window.location.href='.php'">Registrarse</button>
-        </div>
-        <div class="panel-derecho">
-            <h2>Iniciar Sesión</h2>
-            <form method="post" action="iniciar-sesion.php">
-                <div class="grupo-formulario">
-                    <label for="txtEmail">Email:</label>
-                    <input type="email" name="txtEmail" id="txtEmail" required />
-                </div>
-                <div class="grupo-formulario">
-                    <label for="txtContraseña">Contraseña:</label>
-                    <input type="password" name="txtContraseña" id="txtContraseña" required />
-                </div>
-                <button type="submit" name="btnIniciarSesion" id="btnIniciarSesion" class="btn">Iniciar Sesión</button>
-            </form>
-        </div>
-    </div>
+    <form method="post" action="iniciar-sesion.php">
+        <label>
+            Email:
+            <input type=" email" name="txtEmail" id="txtEmail" value="" />
+        </label>
+        <br />
+        <lable>
+            Contraseña:
+            <input type="password" name="txtContraseña" id="txtContraseña" value="" />
+        </lable>
+        <br />
+        <button type="submit" name="btnIniciarSesion" id="btnIniciarSesion">Iniciar Sesión</button>
+    </form>
 </body>
 
 </html>
