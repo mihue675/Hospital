@@ -16,13 +16,10 @@ if (isset($_POST['btnRegistrarse']) && $_POST['txtEmail'] != "" && $_POST['txtCo
         header("Location: ../../index.php");
     }
 }
-
 ?>
 
 <body>
     <div class="divTodo">
-
-         
 
         <div class="panel-derecho">
         <h2>Registrarse</h2>
