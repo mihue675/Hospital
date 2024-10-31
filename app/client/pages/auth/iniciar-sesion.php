@@ -13,6 +13,7 @@ if (isset($_SESSION['idUsuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital - Iniciar Sesión</title>
     <link rel="stylesheet" href="iniciar-sesion.css">
+    <link rel="icon" href="../../images/logo.png" />
 </head>
 
 <?php
