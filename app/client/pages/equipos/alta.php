@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="alta-equipos.css" rel="stylesheet">
+    <link rel="icon" href="../../images/logo.png" />
     <title>Equipos - Alta</title>
 </head>
 
@@ -32,6 +34,7 @@ if (
 
 <body>
     <form method="post" action="./alta.php">
+    <h1>Alta de Equipos</h1>
         <label>
             Nombre:
             <input type="text" name="txtNombre" id="txtNombre" value="" />
@@ -43,7 +46,7 @@ if (
         </label>
         <br />
         <label>
-            Modelo
+            Modelo:
             <input type="text" name="txtModelo" id="txtModelo" value="" />
         </label>
         <br />
@@ -53,7 +56,7 @@ if (
         </label>
         <br />
         <label>
-            Fecha de compra
+            Fecha de compra:
             <input type="date" name="txtFechaDeCompra" id="txtFechaDeCompra" value="" />
         </label>
         <br />
@@ -83,7 +86,7 @@ if (
         </label>
         <br />
         <label>
-            Proveedor
+            Proveedor:
             <select name="txtProveedor" id="txtProveedor">
                 <option disabled selected value="">Seleccione un proveedor</option>
                 <?php
