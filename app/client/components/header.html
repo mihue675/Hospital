@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="header.css">
+</head>
+
+<body>
+    <header>
+        <div class="div-menu">
+            <div class="container">
+                <a class="botonBarra" href="../index.php">Inicio</a>
+                <li>
+                    <a class="botonBarra" href="#services">Servicios</a>
+                    <!-- Submenú -->
+                    <ul class="submenu">
+                        <li><a href="#linkequipos">Equipos</a></li>
+                        <li><a href="#linkreservas">Reservas</a></li>
+                        <li><a href="../pages/mantenimientos/index.php">Mantenimiento</a></li>
+                    </ul>
+                </li>
+                <a class="botonBarra" href="#about">Acerca de</a>
+            </div>
+            <a class="botonBarra" href="cerrar-sesion.php" class ="cerrar-sesion">Cerrar Sesión</a>
+        </div>
+    </header>
+</body>
+
+</html>
+
+<!--
+
+para importar el header hacen un div dentro del body q va donde pondrian el header
+
+<div id="header"></div>
+
+y despues usan
+
+<script>
+    async function loadHeader() {
+      const response = await fetch('header.html');
+      const html = await response.text();
+      document.getElementById('header').innerHTML = html;
+    }
+</script>
+-->
