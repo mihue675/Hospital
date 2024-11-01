@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+    
+  header {
+
+    border-top-color: #37474F;
+    background-color: #00796B;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+
+  }
+
+  .div-menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .container {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .div-menu > li {
+    position: relative;
+  }
+
+  .div-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+    position: relative;
+    border: 2px solid transparent; /* Borde transparente por defecto */
+  }
+
+  .div-menu a:hover{
+    background-color: #37474F;
+    border-radius: 20px;
+    border-color: rgb(255, 255, 255);
+  }
+
+  .submenu {
+    position: absolute; 
+    background-color: #37474F;
+    display: none;
+    width: 200px;
+    margin-top: 15px;
+  }
+
+  /* estilos botones submenu */
+  .submenu a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    display: block;
+    
+  }
+
+  .submenu a:hover {
+    border-color: #ECEFF1;
+    border-radius: 0;
+    background-color: #555; /* Cambia el fondo al pasar el mouse (opcional) */
+    color: #80CBC4; /* Cambia el color del texto al pasar el mouse (opcional) */
+
+}
+
+.submenu:before {
+    content: "";
+    display: block;
+    height: 20px;
+    position: absolute;
+    top: -20px;
+    width: 100%;
+}
+
+  /* muestra el submenu al pasar el mouse */
+  .container > li:hover .submenu {
+    display: block;
+  }
+
+  /* esto es para q aparezca en posicion */
+  .container li {
+    position: relative;
+  }
+
+  
