@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #80CBC4;
+    display: flex;
+    justify-content: left;
+    margin: 0;
+    padding: 20px;
+}
+
+/*filtro*/
+form {
+    background-color: #00796B;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+    width: 300px;
+}
+
+label {
+    font-weight: bold;
+    color: white;
+}
+
+select {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+/*contenedor de equipos y equipos*/
+.contenedor-equipos {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los equipos pasen a la siguiente línea si no caben en una */
+    gap: 20px; /* Espacio entre los equipos */
+}
+
+.equipo {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 15px;
+    width: 450px;
+}
+
+.equipo p  {
+    font-size: 16px;
+    color: black;
+    margin: 10px 0;
+    
+}
+
+.equipo div {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.equipo select {
+    padding: 8px;
+    font-size: 16px;
+    margin-left: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/*boton dar de baja*/
+button {
+    background-color: #00796b;
+    color: white;
+    padding: 10px 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #118a7c;
+}
+
+
+
+/* Estilos de fondo según el estado */
+.disponible-bg {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.en-uso-bg {
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.en-mantenimiento-bg {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.fuera-de-servicio-bg {
+    background-color: rgb(179, 165, 165);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
