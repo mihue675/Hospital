@@ -6,7 +6,49 @@ function AltaEquipo($nombre, $marca, $modelo, $numeroDeSerie, $fechaDeCompra, $u
 {
     global $conn;
     $sql = "INSERT INTO equipos(nombre,marca,modelo,num_serie,fecha_compra,ubicacion,descripcion,id_categoria,id_proveedor)"
-        . "VALUES ('$nombre','$marca','$modelo',$numeroDeSerie,$fechaDeCompra,'$ubicacion','$descripcion',$categoria,$proveedor)";
+        . "VALUES ('$nombre','$marca','$modelo',$numeroDeSerie,'$fechaDeCompra','$ubicacion','$descripcion',$categoria,$proveedor)";
 
+    mysqli_query($conn, $sql);
+}
+
+function BajaEquipo($id)
+{
+    global $conn;
+    $sql = "DELETE FROM equipos WHERE id = $id";
+    mysqli_query($conn, $sql);
+}
+
+function ObtenerEquipos()
+{
+    global $conn;
+    $sql = "SELECT * FROM equipos";
+    $query = mysqli_query($conn, $sql);
+
+    $array = array();
+    while ($i = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+        $array[] = $i;
+    }
+
+    return $array;
+}
+
+function ObtenerEquiposPorCategoria($id_categoria)
+{
+    global $conn;
+    $sql = "SELECT * FROM equipos WHERE id_categoria = $id_categoria";
+    $query = mysqli_query($conn, $sql);
+
+    $array = array();
+    while ($i = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+        $array[] = $i;
+    }
+
+    return $array;
+}
+
+function CambiarEstado($id, $estado)
+{
+    global $conn;
+    $sql = "UPDATE equipos SET estado = '$estado' WHERE id = $id";
     mysqli_query($conn, $sql);
 }
