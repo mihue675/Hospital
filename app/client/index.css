@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("images/fondo-index.jpg");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+
+
+.intro {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    padding: 40px;
+    background-color: #80CBC4;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.intro-text {
+    flex: 1;
+    padding-right: 20px;
+    padding-left: 90px
+}
+
+.intro-text h1 {
+    font-size: 64px;
+    margin-bottom: 20px;
+    color: #37474F;
+    padding-bottom:20px;
+}
+
+.intro-text p {
+    font-size: 22px;
+    line-height: 1.5;
+    margin-bottom: 35px;
+    color: #37474F;
+}
+
+.intro-text button {
+    padding: 12px 24px;
+    font-size: 18px;
+    color: white;
+    background-color: #00796B;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 20px;
+}
+
+.intro-text button:hover {
+    background-color: #e0e0e0;
+    color: #00796B;
+}
+
+.intro-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-image img {
+    width: 100%;
+    max-width: 600px;
+
+}
