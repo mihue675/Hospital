@@ -15,3 +15,14 @@ function ObtenerCategorias()
 
     return $array;
 }
+
+function ObtenerCategoriaPorId($id)
+{
+    global $conn;
+    $sql = "SELECT * FROM categorias WHERE id = $id";
+    $query = mysqli_query($conn, $sql);
+
+    $resultado = mysqli_fetch_array($query, MYSQLI_ASSOC);
+
+    return $resultado;
+}

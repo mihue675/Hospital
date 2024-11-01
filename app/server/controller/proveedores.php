@@ -15,3 +15,14 @@ function ObtenerProveedores()
 
     return $array;
 }
+
+function ObtenerProveedorPorId($id)
+{
+    global $conn;
+    $sql = "SELECT * FROM proveedores WHERE id = $id";
+    $query = mysqli_query($conn, $sql);
+
+    $resultado = mysqli_fetch_array($query, MYSQLI_ASSOC);
+
+    return $resultado;
+}
