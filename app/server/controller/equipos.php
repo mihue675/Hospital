@@ -46,6 +46,17 @@ function ObtenerEquiposPorCategoria($id_categoria)
     return $array;
 }
 
+function ObtenerEquipoPorId($id)
+{
+    global $conn;
+    $sql = "SELECT * FROM equipos WHERE id = $id";
+    $query = mysqli_query($conn, $sql);
+
+    $resultado = mysqli_fetch_array($query, MYSQLI_ASSOC);
+
+    return $resultado;
+}
+
 function CambiarEstado($id, $estado)
 {
     global $conn;
