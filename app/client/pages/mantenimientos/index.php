@@ -13,6 +13,7 @@ if (!isset($_SESSION['idUsuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mantenimientos</title>
     <link rel="icon" href="../../images/logo.png" />
+    <link rel="stylesheet" href="index.css"/>
 </head>
 
 <?php
@@ -38,8 +39,12 @@ if (isset($_POST['btnReportar']) && $_POST['txtEquipoCorrectivo'] != "" && $_POS
 ?>
 
 <body>
-    <div>
-        <span>Asignar plan de mantenimineto preventivo a un equipo</span>
+  
+    <h1>Registro de mantenimientos</h1>
+    <p> Complete el formulario correspondiente al tipo de mantenimiento que desea registrar para un equipo.</p>
+<div class="contenedor-formularios">
+        <div class="formulario">
+        <span>Mantenimiento preventivo</span>
         <form method="post" action="index.php">
             <select name="txtEquipo" id="txtEquipo">
                 <option disabled selected value="">Seleccionar Equipo</option>
@@ -61,8 +66,8 @@ if (isset($_POST['btnReportar']) && $_POST['txtEquipoCorrectivo'] != "" && $_POS
             <button type="submit" id="btnAsignar" name="btnAsignar">Asignar</button>
         </form>
     </div>
-    <div>
-        <span>Solicitud de mantenimiento correctivo</span>
+    <div class="formulario">
+        <span>Mantenimiento correctivo</span>
         <form method="post" action="index.php">
             <select name="txtEquipoCorrectivo" id="txtEquipoCorrectivo">
                 <option disabled selected value="">Seleccionar Equipo</option>
@@ -76,17 +81,19 @@ if (isset($_POST['btnReportar']) && $_POST['txtEquipoCorrectivo'] != "" && $_POS
                 ?>
             </select>
             <label for="txtFallo">
-                Descripcion del fallo
+                Descripción del fallo:
                 <textarea name="txtFallo" id="txtFallo"></textarea>
             </label>
             <button type="submit" id="btnReportar" name="btnReportar">Reportar</button>
         </form>
     </div>
-    <div>
+    </div>
+
         <button onclick="window.location.href = './historial.php'">
             Ver todos los mantenimientos
         </button>
-    </div>
+
+
 </body>
 
 </html>
