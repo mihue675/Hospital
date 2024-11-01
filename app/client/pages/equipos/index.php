@@ -12,6 +12,7 @@ if (!isset($_SESSION['idUsuario'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equipos</title>
+    <link href="index-equipos.css" rel="stylesheet">
     <link rel="icon" href="../../images/logo.png" />
 
     <script>
@@ -35,8 +36,26 @@ if (!isset($_SESSION['idUsuario'])) {
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Actualiza la interfaz de usuario.
-                    location.reload();
+                    // Cambia el texto y el fondo sin recargar la página
+                    const estadoTexto = document.getElementById("estadoTexto-" + id);
+                    estadoTexto.textContent = estado;
+                    estadoTexto.className = ""; // Quita todas las clases de fondo
+
+                    // Asigna la clase de fondo según el estado seleccionado
+                    switch (estado) {
+                        case "Disponible":
+                            estadoTexto.classList.add("disponible-bg");
+                            break;
+                        case "En uso":
+                            estadoTexto.classList.add("en-uso-bg");
+                            break;
+                        case "En mantenimiento":
+                            estadoTexto.classList.add("en-mantenimiento-bg");
+                            break;
+                        case "Fuera de servicio":
+                            estadoTexto.classList.add("fuera-de-servicio-bg");
+                            break;
+                    }
                 }
             };
             xhr.send("id=" + id + "&estado=" + estado); // Enviar el id y el nuevo estado
@@ -54,6 +73,64 @@ if (!isset($_SESSION['idUsuario'])) {
             };
             xhr.send("id=" + id + "&btnDarDeBaja=1"); // Enviar el id del equipo a eliminar.
         }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const selectsEstado = document.querySelectorAll("select[name='txtEstado']");
+
+    selectsEstado.forEach(select => {
+        const equipoId = select.getAttribute("onchange").match(/\d+/)[0];
+        const estadoTexto = document.getElementById("estadoTexto-" + equipoId);
+
+        // Función para actualizar el texto y el color de fondo del estado
+        function actualizarEstadoTexto(estado) {
+            estadoTexto.classList.remove("disponible-bg", "en-uso-bg", "en-mantenimiento-bg", "fuera-de-servicio-bg");
+
+            switch (estado) {
+                case "Disponible":
+                    estadoTexto.textContent = "Disponible";
+                    estadoTexto.classList.add("disponible-bg");
+                    break;
+                case "En uso":
+                    estadoTexto.textContent = "En uso";
+                    estadoTexto.classList.add("en-uso-bg");
+                    break;
+                case "En mantenimiento":
+                    estadoTexto.textContent = "En mantenimiento";
+                    estadoTexto.classList.add("en-mantenimiento-bg");
+                    break;
+                case "Fuera de servicio":
+                    estadoTexto.textContent = "Fuera de servicio";
+                    estadoTexto.classList.add("fuera-de-servicio-bg");
+                    break;
+            }
+        }
+
+        // Enviar el estado seleccionado al servidor sin recargar
+        select.addEventListener("change", function() {
+            const nuevoEstado = select.value;
+
+            // Llama a la función para actualizar el color localmente
+            actualizarEstadoTexto(nuevoEstado);
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "index.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log("Estado actualizado en el servidor");
+                    // No recargamos la página, ya que el estado se ha actualizado localmente
+                }
+            };
+            xhr.send("id=" + equipoId + "&estado=" + nuevoEstado); // Enviar el id y el nuevo estado
+        });
+
+        // Inicializa el estado con el valor actual
+        actualizarEstadoTexto(select.value);
+    });
+});
+
     </script>
 </head>
 
@@ -77,42 +154,41 @@ if (isset($_POST['btnDarDeBaja'])) {
 <body>
     <div>
         <form method="post" action="index.php">
-            <label for="txtCategoria">
-                Filtrar por categoria
-            </label>
+            <label for="txtCategoria">Filtrar por categoria</label>
             <select name="txtCategoria" id="txtCategoria" onchange="FiltrarEquipos()">
                 <option disabled selected value="">Seleccionar</option>
                 <option value="">Todas</option>
                 <?php
                 $filas = ObtenerCategorias();
-                for ($i = 0; $i < count($filas); $i++) {
+                foreach ($filas as $categoria) {
                 ?>
-                    <option value=<?php echo $filas[$i]['id'] ?>> <?php echo $filas[$i]['nombre'] ?> </option>
+                    <option value="<?php echo $categoria['id']; ?>"><?php echo $categoria['nombre']; ?></option>
                 <?php
                 }
                 ?>
             </select>
         </form>
     </div>
-    <div>
+    
+    <div class="contenedor-equipos">
         <?php
-
         $filas = ObtenerEquipos();
-
-        for ($i = 0; $i < count($filas); $i++) {
+        foreach ($filas as $equipo) {
         ?>
-            <div class="equipo" data-categoria="<?php echo ($filas[$i]['id_categoria']); ?>">
-                <p> <?php echo $filas[$i]['nombre'] ?> </p>
-                <p> <?php echo $filas[$i]['marca'] ?> </p>
-                <p> <?php echo $filas[$i]['modelo'] ?> </p>
-                <p> <?php echo date("d/m/Y", strtotime($filas[$i]['fecha_compra']));  ?> </p>
-                <p> <?php echo $filas[$i]['ubicacion'] ?> </p>
-                <p> <?php echo $filas[$i]['descripcion'] ?> </p>
-                <p> <?php print_r(ObtenerCategoriaPorId($filas[$i]['id_categoria'])['nombre']) ?> </p>
-                <p> <?php print_r(ObtenerProveedorPorId($filas[$i]['id_categoria'])['nombre']) ?> </p>
-                <div>
-                    <p> <?php echo $filas[$i]['estado'] ?> </p>
-                    <select name="txtEstado" id="txtEStado" onchange="CambiarEstado(<?php echo $filas[$i]['id']; ?>, this.value)">
+            <div class="equipo" data-categoria="<?php echo $equipo['id_categoria']; ?>">
+                <p><strong>Nombre:</strong> <?php echo $equipo['nombre']; ?></p>
+                <p><strong>Marca:</strong> <?php echo $equipo['marca']; ?></p>
+                <p><strong>Modelo:</strong> <?php echo $equipo['modelo']; ?></p>
+                <p><strong>Numero de serie:</strong> <?php echo $equipo['num_serie']; ?></p>
+                <p><strong>Fecha de compra:</strong> <?php echo date("d/m/Y", strtotime($equipo['fecha_compra'])); ?></p>
+                <p><strong>Ubicacion:</strong> <?php echo $equipo['ubicacion']; ?></p>
+                <p><strong>Descripcion:</strong> <?php echo $equipo['descripcion']; ?></p>
+                <p><strong>Categoria:</strong> <?php echo ObtenerCategoriaPorId($equipo['id_categoria'])['nombre']; ?></p>
+                <p><strong>Proveedor:</strong> <?php echo ObtenerProveedorPorId($equipo['id_categoria'])['nombre']; ?></p>
+                
+                <div class="estado">
+                    <p><span id="estadoTexto-<?php echo $equipo['id']; ?>"><?php echo $equipo['estado']; ?></span></p>
+                    <select name="txtEstado" onchange="CambiarEstado(<?php echo $equipo['id']; ?>, this.value)">
                         <option disabled selected value="">Seleccionar</option>
                         <option value="Disponible">Disponible</option>
                         <option value="En uso">En uso</option>
@@ -121,7 +197,7 @@ if (isset($_POST['btnDarDeBaja'])) {
                     </select>
                 </div>
                 <div>
-                    <button type="button" name="btnDarDeBaja" id="btnDarDeBaja" value="<?php echo $filas[$i]['id'] ?>" onclick="DarDeBaja(this.value)">Dar de baja</button>
+                    <button type="button" onclick="DarDeBaja(<?php echo $equipo['id']; ?>)">Dar de baja</button>
                 </div>
             </div>
         <?php
@@ -129,5 +205,6 @@ if (isset($_POST['btnDarDeBaja'])) {
         ?>
     </div>
 </body>
+
 
 </html>
