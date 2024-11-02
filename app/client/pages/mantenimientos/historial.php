@@ -13,6 +13,7 @@ if (!isset($_SESSION['idUsuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mantenimientos - Historial</title>
     <link rel="icon" href="../../images/logo.png" />
+    <link rel="stylesheet" href="historial.css"/>
 
     <script>
         function AsignarTecnico(id_mantenimiento, id_tecnico) {
@@ -128,17 +129,18 @@ if (isset($_POST['tecnico']) && $_POST['tecnico'] != "") {
 ?>
 
 <body>
-    <div>
-        <span>Filtrar Mantenimientos</span>
-        <div>
+   <div class="contenedor-contenedor-filtros">
+    <div class="contenedor-filtros">
+        <span>Filtrar mantenimientos:</span> 
+        <div class="filtro">
             <select name="selectPorVencimiento" id="selectPorVencimiento" onchange="FiltrarMantenimientosPorVencimiento()">
                 <option disabled selected value="">Por vencimiento</option>
                 <option value="Todos">Todos</option>
                 <option value="Vencidos">Vencidos</option>
-                <option value="Prox">Proximos a vencer</option>
+                <option value="Prox">Próximos a vencer</option>
             </select>
             <select name="selectPorTecnicoAsignado" id="selectPorTecnicoAsignado" onchange="FiltrarMantenimientosPorTecnico()">
-                <option disabled selected value="">Por tecnico asignado</option>
+                <option disabled selected value="">Por técnico asignado</option>
                 <option value="SinTecnicoAsignado">Sin técnico asignado</option>
                 <option value="Todos">Todos</option>
                 <?php
@@ -157,19 +159,20 @@ if (isset($_POST['tecnico']) && $_POST['tecnico'] != "") {
                 <option value="Correctivo">Correctivo</option>
             </select>
         </div>
+        </div>
     </div>
-    <div>
+    <div class="contenedor">
         <?php
         $filas = ObtenerMantenimientos();
         for ($i = 0; $i < count($filas); $i++) {
         ?>
             <div class="mantenimiento" data-tecnico="<?php echo ($filas[$i]['id_tecnico']); ?>" data-vencimiento="<?php echo $filas[$i]['fecha'] ?>" data-tecnico="<?php echo $filas[$i]['id_tecnico'] ?>" data-tipo=<?php echo $filas[$i]['tipo'] ?>>
-                <p>Equipo: <?php print_r(ObtenerEquipoPorId($filas[$i]['id_equipo'])['nombre'])  ?></p>
-                <?php if ($filas[$i]['fecha'] != "0000-00-00") { ?><p>Próximo mantenimiento: <?php echo $filas[$i]['fecha'] ?> </p> <?php } ?>
-                <p>Tipo: <?php echo $filas[$i]['tipo'] ?></p>
-                <?php if ($filas[$i]['descripcion'] != "") { ?><p>Descripcion: <?php echo $filas[$i]['descripcion'] ?> </p> <?php } ?>
+                <p><strong>Equipo: </strong><?php print_r(ObtenerEquipoPorId($filas[$i]['id_equipo'])['nombre'])  ?></p> 
+                <?php if ($filas[$i]['fecha'] != "0000-00-00") { ?><p><strong>Próximo mantenimiento: </strong> <?php echo $filas[$i]['fecha'] ?> </p> <?php } ?>
+                <p><strong>Tipo:</strong> <?php echo $filas[$i]['tipo'] ?></p>
+                <?php if ($filas[$i]['descripcion'] != "") { ?><p><strong>Descripción:</strong> <?php echo $filas[$i]['descripcion'] ?> </p> <?php } ?>
                 <div>
-                    <p>Técnico: <?php
+                    <p><strong>Técnico: </strong> <?php
                                 if (isset($filas[$i]['id_tecnico'])) {
                                     print_r(ObtenerUsuarioPorId($filas[$i]['id_tecnico'])['nombre'] . " " . ObtenerUsuarioPorId($filas[$i]['id_tecnico'])['apellido']);
                                 } else {
