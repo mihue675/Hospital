@@ -2,6 +2,16 @@
 // Importamos la conexión a la base de datos.
 require_once __DIR__ . "/../db.php";
 
+function AltaProveedor($nombre, $telefono, $garantia)
+{
+    global $conn;
+    $sql = "INSERT INTO proveedores(nombre,telefono,garantia) VALUES ('$nombre','$telefono','$garantia')";
+
+    mysqli_query($conn, $sql);
+}
+
+
+
 function ObtenerProveedores()
 {
     global $conn;
