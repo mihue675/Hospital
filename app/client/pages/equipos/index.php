@@ -151,7 +151,38 @@ if (isset($_POST['btnDarDeBaja'])) {
 }
 ?>
 
+<script>
+    async function loadHeader() {
+      const response = await fetch('../../components/header.html');
+      const html = await response.text();
+      document.getElementById('header').innerHTML = html;
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = '../../components/header.css';
+      document.head.appendChild(link);
+    }
+
+    loadHeader();
+</script>
+
+<script>
+    async function loadFooter() {
+      const response = await fetch('../../components/footer.html');
+      const html = await response.text();
+      document.getElementById('footer').innerHTML = html;
+
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = '../../components/footer.css';
+      document.head.appendChild(link);
+    }
+
+    loadFooter();
+</script>
+
+
 <body>
+    <div id="header"></div>
     <div>
         <form method="post" action="index.php">
             <label for="txtCategoria">Filtrar por categoria</label>
@@ -204,6 +235,8 @@ if (isset($_POST['btnDarDeBaja'])) {
         }
         ?>
     </div>
+    
+    <div id="footer"></div>
 </body>
 
 
