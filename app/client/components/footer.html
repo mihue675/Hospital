@@ -21,10 +21,16 @@ para importar el header hacen un div dentro del body q va donde pondrian el head
 y despues usan
 
 <script>
-    async function loadFooter() {
-      const response = await fetch('footer.php');
+    async function loadFeader() {
+      const response = await fetch('../../components/footer.html');
       const html = await response.text();
       document.getElementById('footer').innerHTML = html;
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = '../../components/footer.css';
+      document.head.appendChild(link);
     }
+
+    loadFooter();
 </script>
 -->
