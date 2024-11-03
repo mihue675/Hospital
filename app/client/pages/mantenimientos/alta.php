@@ -54,7 +54,7 @@ if (isset($_POST['btnReportar']) && $_POST['txtEquipoCorrectivo'] != "" && $_POS
         <div class="contenedor-formularios">
             <div class="formulario">
                 <span class="span">Mantenimiento preventivo</span>
-                <form method="post" action="index.php">
+                <form method="post" action="alta.php">
                     <select name="txtEquipo" id="txtEquipo">
                         <option disabled selected value="">Seleccionar Equipo</option>
                         <?php
@@ -77,7 +77,7 @@ if (isset($_POST['btnReportar']) && $_POST['txtEquipoCorrectivo'] != "" && $_POS
             </div>
             <div class="formulario">
                 <span class="span">Mantenimiento correctivo</span>
-                <form method="post" action="index.php">
+                <form method="post" action="alta.php">
                     <select name="txtEquipoCorrectivo" id="txtEquipoCorrectivo">
                         <option disabled selected value="">Seleccionar Equipo</option>
                         <?php
