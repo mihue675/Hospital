@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['idUsuario'])) {
+    header("Location: ../../index.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,7 +13,7 @@
     <html translate="no">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="alta-equipos.css" rel="stylesheet">
+    <link href="alta.css" rel="stylesheet">
     <link rel="icon" href="../../images/logo.png" />
     <title>Equipos - Alta</title>
 </head>
