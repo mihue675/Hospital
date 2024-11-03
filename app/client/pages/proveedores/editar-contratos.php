@@ -6,8 +6,10 @@ if (!isset($_SESSION['idUsuario'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
+    <html translate="no">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Contrato</title>
@@ -50,41 +52,42 @@ if (
     <main>
         <h1>Editar Contrato</h1>
         <div class="formProveedor">
-        <form method="post" action="">
-            <label>
-            Proveedor:
-            <select name="txtProveedor" id="txtProveedor">
-                <option disabled value="">Seleccione un proveedor</option>
-                <?php
-                $filas = ObtenerProveedores();
-                foreach ($filas as $proveedor) {
-                    // Marcar el proveedor actual del contrato como seleccionado
-                    $selected = $proveedor['id'] == $contrato['id_proveedor'] ? 'selected' : '';
-                    echo "<option value='{$proveedor['id']}' $selected>{$proveedor['nombre']}</option>";
-                }
-                ?>
-            </select>
-            </label>
-            <br>
-            <label> 
-                Fecha de expiración: 
-                <input type="date" name="dateExpiracion" id="dateExpiracion" value="<?php echo $contrato['fecha_expiración']; ?>">
-            </label>
-            <br>
-            <label> 
-                Términos:
-                <input type="text" name="txtTerminos" id="txtTerminos" value="<?php echo $contrato['terminos']; ?>">
-            </label>
-            <br>
-            <label> 
-                Costos:
-                <input type="number" name="numCosto" id="numCosto" value="<?php echo $contrato['costos']; ?>">
-            </label>
-            <button type="submit" name="btnEditarContrato" id="btnEditarContrato">Guardar Cambios</button>
-        </form>
-        <button name="btnVolver" onclick="window.location.href='./index.php'">Volver</button>   
+            <form method="post" action="">
+                <label>
+                    Proveedor:
+                    <select name="txtProveedor" id="txtProveedor">
+                        <option disabled value="">Seleccione un proveedor</option>
+                        <?php
+                        $filas = ObtenerProveedores();
+                        foreach ($filas as $proveedor) {
+                            // Marcar el proveedor actual del contrato como seleccionado
+                            $selected = $proveedor['id'] == $contrato['id_proveedor'] ? 'selected' : '';
+                            echo "<option value='{$proveedor['id']}' $selected>{$proveedor['nombre']}</option>";
+                        }
+                        ?>
+                    </select>
+                </label>
+                <br>
+                <label>
+                    Fecha de expiración:
+                    <input type="date" name="dateExpiracion" id="dateExpiracion" value="<?php echo $contrato['fecha_expiración']; ?>">
+                </label>
+                <br>
+                <label>
+                    Términos:
+                    <input type="text" name="txtTerminos" id="txtTerminos" value="<?php echo $contrato['terminos']; ?>">
+                </label>
+                <br>
+                <label>
+                    Costos:
+                    <input type="number" name="numCosto" id="numCosto" value="<?php echo $contrato['costos']; ?>">
+                </label>
+                <button type="submit" name="btnEditarContrato" id="btnEditarContrato">Guardar Cambios</button>
+            </form>
+            <button name="btnVolver" onclick="window.location.href='./index.php'">Volver</button>
         </div>
 
     </main>
 </body>
+
 </html>

@@ -1,9 +1,10 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #80CBC4;
+    background-color: #ECEFF1;
     justify-content: left;
     margin: 0;
+    overflow-y: scroll; /* Siempre muestra la scrollbar vertical */
 }
 
 /*filtro*/
@@ -35,11 +36,21 @@ select {
     display: flex;
     flex-wrap: wrap; /* Permite que los equipos pasen a la siguiente línea si no caben en una */
     gap: 20px; /* Espacio entre los equipos */
+    padding-bottom: 50px;
+    margin-left: 6em;
+}
+
+.contenedor-filtros {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los equipos pasen a la siguiente línea si no caben en una */
+    gap: 20px; /* Espacio entre los equipos */
+    margin-left: 6em;
 }
 
 .equipo {
     background-color: #ffffff;
     border-radius: 8px;
+    border: 3px solid #00796B;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-bottom: 15px;
@@ -90,27 +101,23 @@ button:hover {
     background-color: green;
     color: white;
     padding: 10px;
-    border-radius: 5px;
 }
 
 .en-uso-bg {
     background-color: orange;
     color: white;
     padding: 10px;
-    border-radius: 5px;
 }
 
 .en-mantenimiento-bg {
     background-color: red;
     color: white;
     padding: 10px;
-    border-radius: 5px;
 }
 
 .fuera-de-servicio-bg {
     background-color: rgb(179, 165, 165);
     color: white;
     padding: 10px;
-    border-radius: 5px;
 }
 

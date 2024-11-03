@@ -6,28 +6,30 @@ if (!isset($_SESSION['idUsuario'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
+    <html translate="no">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Gestión de proveedores y contratos</title>
     <link rel="icon" href="../../images/logo.png" />
-    <link href="index.css" rel="stylesheet"/>
+    <link href="index.css" rel="stylesheet" />
 </head>
 
 <?php
-    require_once __DIR__ . "/../../../server/controller/contratos.php";
-    require_once __DIR__ . "/../../../server/controller/proveedores.php";
-    $contratos = ObtenerContratos(); 
+require_once __DIR__ . "/../../../server/controller/contratos.php";
+require_once __DIR__ . "/../../../server/controller/proveedores.php";
+$contratos = ObtenerContratos();
 
-    if (isset($_POST['btnEliminarContrato'])) {
-        $id_contrato = $_POST['id_contrato'];
-        EliminarContrato($id_contrato);
-    
-        // Redirigir o actualizar la página después de la eliminación
-        header("Location: ./index.php"); // O puedes usar un mensaje de éxito y no redirigir
-        exit;
-    }
+if (isset($_POST['btnEliminarContrato'])) {
+    $id_contrato = $_POST['id_contrato'];
+    EliminarContrato($id_contrato);
+
+    // Redirigir o actualizar la página después de la eliminación
+    header("Location: ./index.php"); // O puedes usar un mensaje de éxito y no redirigir
+    exit;
+}
 
 
 
@@ -37,26 +39,26 @@ if (!isset($_SESSION['idUsuario'])) {
 
 <body>
 
-<main>
-    <h1>Gestión de proveedores y contratos</h1>
+    <main>
+        <h1>Gestión de proveedores y contratos</h1>
 
-    <a href="./alta-proveedores.php">Añadir un proveedor</a>
-    <a href="./alta-contratos.php">Asignar un nuevo contrato</a>
+        <a href="./alta-proveedores.php">Añadir un proveedor</a>
+        <a href="./alta-contratos.php">Asignar un nuevo contrato</a>
 
-    <!-- Tabla de contratos registrados -->
-    <section>
-        <h2>Contratos de Mantenimiento Registrados</h2>
-        <table class="tablaContratos" border="2">
-            <tr>
-                <th>Proveedor</th>
-                <th>Fecha de Expiración</th>
-                <th>Términos</th>
-                <th>Costos</th>
-                <th>Acciones</th>
-            </tr>
-            <?php
-            foreach ($contratos as $contrato) {
-                echo "<tr>
+        <!-- Tabla de contratos registrados -->
+        <section>
+            <h2>Contratos de Mantenimiento Registrados</h2>
+            <table class="tablaContratos" border="2">
+                <tr>
+                    <th>Proveedor</th>
+                    <th>Fecha de Expiración</th>
+                    <th>Términos</th>
+                    <th>Costos</th>
+                    <th>Acciones</th>
+                </tr>
+                <?php
+                foreach ($contratos as $contrato) {
+                    echo "<tr>
                         <td>{$contrato['nombre_proveedor']}</td>
                         <td>{$contrato['fecha_expiración']}</td>
                         <td>{$contrato['terminos']}</td>
@@ -70,53 +72,54 @@ if (!isset($_SESSION['idUsuario'])) {
                         <button name='btnEditar' onclick=\"window.location.href='./editar-contratos.php?id={$contrato['id']}';\">Editar</button>
                         </td>
                     </tr>";
-            }
-            ?>
-        </table>
-    </section>
+                }
+                ?>
+            </table>
+        </section>
 
 
-<?php
+        <?php
 
-$proveedores = ObtenerProveedores();
+        $proveedores = ObtenerProveedores();
 
-echo "<h2>Proveedores</h2>";
-echo "<table class='tablaProveedores'>
+        echo "<h2>Proveedores</h2>";
+        echo "<table class='tablaProveedores'>
         <tr>
             <th>Nombre</th>
             <th>Fecha de Garantía</th>
             <th>Estado de Garantía</th>
         </tr>";
 
-foreach ($proveedores as $proveedor) {
-    // calculo de la garantia
-    $garantia = new DateTime($proveedor['garantia']);
-    $fecha_actual = new DateTime();
-    $intervalo = $fecha_actual->diff($garantia);
-    
-    $estado_garantia = "";
-    if ($intervalo->days <= 0) {
-        $estado_garantia = "<span class='estado-expirado'>Expirada</span>";
-    } elseif ($intervalo->days <= 30) {
-        $estado_garantia = "<span class='estado-proximo'>Próxima a Expirar ({$intervalo->days} días)</span>";
-    } else {
-        $estado_garantia = "<span class='estado-vigente'>Vigente</span>";
-    }
-    // tabla
-    echo "<tr>
+        foreach ($proveedores as $proveedor) {
+            // calculo de la garantia
+            $garantia = new DateTime($proveedor['garantia']);
+            $fecha_actual = new DateTime();
+            $intervalo = $fecha_actual->diff($garantia);
+
+            $estado_garantia = "";
+            if ($intervalo->days <= 0) {
+                $estado_garantia = "<span class='estado-expirado'>Expirada</span>";
+            } elseif ($intervalo->days <= 30) {
+                $estado_garantia = "<span class='estado-proximo'>Próxima a Expirar ({$intervalo->days} días)</span>";
+            } else {
+                $estado_garantia = "<span class='estado-vigente'>Vigente</span>";
+            }
+            // tabla
+            echo "<tr>
             <td>{$proveedor['nombre']}</td>
             <td>{$proveedor['garantia']}</td>
             <td>{$estado_garantia}</td>
           </tr>";
-}
+        }
 
-echo "</table>";
-?>
-
-
+        echo "</table>";
+        ?>
 
 
-</main>
+
+
+    </main>
 
 </body>
+
 </html>
