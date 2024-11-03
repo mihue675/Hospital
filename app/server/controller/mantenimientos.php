@@ -54,3 +54,17 @@ function AsignarTecnico($id_mantenimiento, $id_tecnico)
     $sql = "UPDATE mantenimientos SET id_tecnico = $id_tecnico WHERE id = $id_mantenimiento";
     mysqli_query($conn, $sql);
 }
+
+function ObtenerMantenimientosPorTecnico($id_tecnico)
+{
+    global $conn;
+    $sql = "SELECT * FROM mantenimientos WHERE id_tecnico = $id_tecnico";
+    $query = mysqli_query($conn, $sql);
+
+    $array = array();
+    while ($i = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+        $array[] = $i;
+    }
+
+    return $array;
+}
