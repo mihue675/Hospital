@@ -146,6 +146,10 @@ if (isset($_POST['btnDarDeBaja'])) {
                 ?>
             </select>
         </form>
+
+        <div>
+            <button type="button" onclick="window.location.href = './alta.php'" class="btn-alta">Alta de equipo</button>
+        </div>
     </div>
 
     <div class="contenedor-equipos">
@@ -157,12 +161,12 @@ if (isset($_POST['btnDarDeBaja'])) {
                 <p class="p"><strong>Marca:</strong> <?php echo $equipo['marca']; ?></p>
                 <p class="p"><strong>Nombre:</strong> <?php echo $equipo['nombre']; ?></p>
                 <p class="p"><strong>Modelo:</strong> <?php echo $equipo['modelo']; ?></p>
-                <p class="p"><strong>Numero de serie:</strong> <?php echo $equipo['num_serie']; ?></p>
+                <p class="p"><strong>Número de serie:</strong> <?php echo $equipo['num_serie']; ?></p>
                 <p class="p"><strong>Fecha de compra:</strong> <?php echo date("d/m/Y", strtotime($equipo['fecha_compra'])); ?></p>
-                <p class="p"><strong>Ubicacion:</strong> <?php echo $equipo['ubicacion']; ?></p>
-                <p class="p"><strong>Descripcion:</strong> <?php echo $equipo['descripcion']; ?></p>
-                <p class="p"><strong>Categoria:</strong> <?php echo ObtenerCategoriaPorId($equipo['id_categoria'])['nombre']; ?></p>
-                <p class="p"><strong>Proveedor:</strong> <?php echo ObtenerProveedorPorId($equipo['id_categoria'])['nombre']; ?></p>
+                <p class="p"><strong>Ubicación:</strong> <?php echo $equipo['ubicacion']; ?></p>
+                <p class="p"><strong>Descripción:</strong> <?php echo $equipo['descripcion']; ?></p>
+                <p class="p"><strong>Categoría:</strong> <?php echo ObtenerCategoriaPorId($equipo['id_categoria'])['nombre']; ?></p>
+                <p class="p"><strong>Proveedor:</strong> <?php echo ObtenerProveedorPorId($equipo['id_proveedor'])['nombre']; ?></p>
 
                 <div class="estado" id="estado">
                     <span id="estadoTexto-<?php echo $equipo['id'] ?>"><?php echo $equipo['estado']; ?></span>
@@ -176,7 +180,7 @@ if (isset($_POST['btnDarDeBaja'])) {
                 </div>
 
                 <div>
-                    <button type="button" onclick="DarDeBaja(<?php echo $equipo['id']; ?>)">Dar de baja</button>
+                    <button class="btn-baja" type="button" onclick="DarDeBaja(<?php echo $equipo['id']; ?>)">Dar de baja</button>
                 </div>
 
             </div>

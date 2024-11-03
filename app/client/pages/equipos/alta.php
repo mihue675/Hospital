@@ -37,6 +37,7 @@ if (
     $categoria =  $_POST['txtCategoria'];
     $proveedor =  $_POST['txtProveedor'];
     AltaEquipo($nombre, $marca, $modelo, $numeroDeSerie, $fechaDeCompra, $ubicacion, $descripcion, $categoria, $proveedor);
+    header("Location: index.php");
 }
 
 ?>
@@ -54,42 +55,42 @@ if (
             <h1>Alta de Equipos</h1>
             <label>
                 Nombre:
-                <input type="text" name="txtNombre" id="txtNombre" value="" />
+                <input type="text" name="txtNombre" id="txtNombre" value="" required />
             </label>
             <br />
             <label>
                 Marca:
-                <input type="text" name="txtMarca" id="txtMarca" value="" />
+                <input type="text" name="txtMarca" id="txtMarca" value="" required />
             </label>
             <br />
             <label>
                 Modelo:
-                <input type="text" name="txtModelo" id="txtModelo" value="" />
+                <input type="text" name="txtModelo" id="txtModelo" value="" required />
             </label>
             <br />
             <label>
                 Número de serie:
-                <input type="number" name="txtNumeroDeSerie" id="txtNumeroDeSerie" value="" />
+                <input type="number" name="txtNumeroDeSerie" id="txtNumeroDeSerie" value="" required />
             </label>
             <br />
             <label>
                 Fecha de compra:
-                <input type="date" name="txtFechaDeCompra" id="txtFechaDeCompra" value="" />
+                <input type="date" name="txtFechaDeCompra" id="txtFechaDeCompra" value="" required />
             </label>
             <br />
             <label>
                 Ubicación:
-                <input type="text" name="txtUbicacion" id="txtUbicacion" value="" />
+                <input type="text" name="txtUbicacion" id="txtUbicacion" value="" required />
             </label>
             <br />
             <label>
                 Descripción:
-                <input type="text" name="txtDescripcion" id="txtDescripcion" value="" />
+                <input type="text" name="txtDescripcion" id="txtDescripcion" value="" required />
             </label>
             <br />
             <label>
                 Categoría:
-                <select name="txtCategoria" id="txtCategoria">
+                <select name="txtCategoria" id="txtCategoria" required>
                     <option disabled selected value="">Seleccione una categoría</option>
                     <?php
                     $filas = ObtenerCategorias();
@@ -104,7 +105,7 @@ if (
             <br />
             <label>
                 Proveedor:
-                <select name="txtProveedor" id="txtProveedor">
+                <select name="txtProveedor" id="txtProveedor" required>
                     <option disabled selected value="">Seleccione un proveedor</option>
                     <?php
                     $filas = ObtenerProveedores();
@@ -117,7 +118,7 @@ if (
                 </select>
             </label>
             <br />
-            <button>Volver</button>
+            <button type="button" onclick="window.location.href = './index.php'">Volver</button>
             <button type="submit" name="btnAltaEquipo" id="btnAltaEquipo">Alta</button>
         </form>
     </div>

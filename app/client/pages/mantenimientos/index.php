@@ -20,7 +20,7 @@ if (!isset($_SESSION['idUsuario'])) {
         function AsignarTecnico(id_mantenimiento, id_tecnico) {
             console.log(id_mantenimiento, id_tecnico)
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", "historial.php", true);
+            xhr.open("POST", "index.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
