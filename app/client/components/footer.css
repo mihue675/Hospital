@@ -1,29 +1,31 @@
-* {
+html, body {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    min-height: 100vh;
-    margin: 0;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-  }
-
-  body::after{
-    min-height: 10px;
-  }
-
-
-footer{
-    width: 100%;
-    background-color: #00796B;
-    min-height: 10px;
-    padding: 5px;
-    color: aliceblue;
-    justify-items: center;
-    position:absolute;
+    display: flex;
+    flex-direction: column;
 }
 
+.content { /* Asegúrate de que el contenedor principal tenga flexibilidad */
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
+    background-color: #00695c; /* Color de fondo similar al de la cabecera */
+    color: #ffffff; /* Color de texto en blanco */
+    text-align: center; /* Centrar el texto */
+    padding: 20px 0; /* Espaciado en la parte superior e inferior */
+    font-family: Arial, sans-serif; /* Asegúrate de usar la misma fuente */
+    font-size: 14px;
+}
+
+footer a {
+    color: #b2dfdb; /* Color para los enlaces */
+    text-decoration: none; /* Quitar subrayado de los enlaces */
+}
+
+footer a:hover {
+    color: #80cbc4; /* Color de enlace al pasar el ratón */
+    text-decoration: underline; /* Subrayado al hacer hover */
+}
 

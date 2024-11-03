@@ -1,110 +1,85 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  .icono-header {
-    width: 40px; /* Establece el ancho deseado */
-    height: 40px; /* Establece la altura deseada */
+/* Estilos generales del header */
+.main-header {
+  background-color: #00796b; /* Color de fondo verde */
+  padding: 1em;
+  margin-bottom: 20px;
 }
 
-    
-  header {
-
-    border-top-color: #37474F;
-    background-color: #00796B;
-    color: white;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    margin-bottom: 10px;
-
-  }
-
-  .div-menu {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .container {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .container2 {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .div-menu > li {
-    position: relative;
-  }
-
-  .div-menu a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    display: block;
-    position: relative;
-    border: 2px solid transparent; /* Borde transparente por defecto */
-  }
-
-  .div-menu a:hover{
-    background-color: #37474F;
-    border-radius: 20px;
-    border-color: rgb(255, 255, 255);
-  }
-
-  .submenu {
-    position: absolute; 
-    background-color: #37474F;
-    display: none;
-    width: 200px;
-    margin-top: 15px;
-    list-style: none;
-  }
-
-  /* estilos botones submenu */
-  .submenu a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem;
-    display: block;
-    
-  }
-
-  .submenu a:hover {
-    border-color: #ECEFF1;
-    border-radius: 0;
-    background-color: #555; /* Cambia el fondo al pasar el mouse (opcional) */
-    color: #80CBC4; /* Cambia el color del texto al pasar el mouse (opcional) */
-
+/* Contenedor del menú de navegación */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.submenu:before {
-    content: "";
-    display: block;
-    height: 20px;
-    position: absolute;
-    top: -20px;
-    width: 100%;
+/* Estilos para el menú principal */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 2em;
+  margin: 0;
+  padding: 0;
 }
 
-  /* muestra el submenu al pasar el mouse */
-  .container > li:hover .submenu {
-    display: block;
-  }
+.nav-menu li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+}
 
-  /* esto es para q aparezca en posicion */
-  .container li {
-    position: relative;
-  }
+/* Estilos para la sección derecha del header */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
 
-  .container2 i{
-    margin-top: 10px;
-  }
-  
+.icon-bell {
+  font-size: 1.2em;
+  color: transparent;  
+  margin-top: -2px;
+  text-shadow: 0 0 0 white;
+  cursor: pointer;
+}
+
+.logout {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Estilos para el submenú */
+.has-submenu {
+  position: relative;
+}
+
+.submenu {
+  display: none; /* Oculto por defecto */
+  position: absolute;
+  top: 100%; /* Muestra el submenú justo debajo del elemento principal */
+  left: 0;
+  background-color: #00796b; /* Mismo color de fondo */
+  padding: 0.5em 0;
+  list-style: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  min-width: 150px;
+}
+
+.submenu li a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  display: block;
+}
+
+.submenu li a:hover {
+  background-color: #005f54; /* Color de fondo cuando se pasa el cursor */
+}
+
+/* Mostrar el submenú cuando se pasa el cursor por "Servicios" */
+.has-submenu:hover .submenu {
+  display: block;
+}
