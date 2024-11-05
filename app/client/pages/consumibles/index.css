@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ECEFF1;
+    overflow-y: scroll;
+}
+
+.contenedor{
+    display: grid;
+    grid-template-columns: repeat(5, minmax(100px, 1fr));
+    gap: 25px; 
+    width: 98%;
+    margin-bottom: 3em;
+    margin-top: 3em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.consumible{
+    background-color: white;
+    border: 3px solid #00796B;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px; 
+    margin: 0; 
+}
+
+.consumible p {
+    font-size: 16px;
+    color: #37474F;
+    margin: 20px 0;
+}
+
+.bajo-stock{
+    background-color:red;
+    color:white;
+    padding: 6px 10px;
+    margin-left: 5px;
+}
+
+.btn-alta{
+    background-color: #00796b;
+    color: white;
+    padding: 10px 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-alta:hover , .btn-editar:hover {
+    background-color: #118a7c;
+}
+
+.btn-editar{
+    background-color: #00796b;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
