@@ -44,7 +44,6 @@ input[type="number"]{
     margin-top: 5px;
 }
 
-
 button {
     background-color: #00796B;
     color: white;
@@ -66,5 +65,7 @@ button:hover {
 .contenedor-botones{
     display:flex;
     justify-content: left;
+    gap: 15px;
+    margin-top: 20px;
 }
 

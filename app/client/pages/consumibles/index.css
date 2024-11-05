@@ -47,11 +47,11 @@ body {
     cursor: pointer;
 }
 
-.btn-alta:hover , .btn-editar:hover {
+.btn-alta:hover , .btnEditar:hover {
     background-color: #118a7c;
 }
 
-.btn-editar{
+.btnEditar{
     background-color: #00796b;
     color: white;
     padding: 10px;
