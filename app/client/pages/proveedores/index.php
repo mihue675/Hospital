@@ -106,7 +106,7 @@ if (isset($_POST['btnEliminarContrato'])) {
             $intervalo = $fecha_actual->diff($garantia);
 
             $estado_garantia = "";
-            if ($intervalo->days <= 0) {
+            if ($garantia < $fecha_actual) {
                 $estado_garantia = "<span class='estado-expirado'>Expirada</span>";
             } elseif ($intervalo->days <= 30) {
                 $estado_garantia = "<span class='estado-proximo'>Próxima a Expirar ({$intervalo->days} días)</span>";
