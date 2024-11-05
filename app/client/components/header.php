@@ -83,6 +83,7 @@ $filasRecientes = array_values($filasRecientes);
                         <li><a href='http://localhost/Hospital/app/client/pages/equipos/'>Equipos</a></li>
                         <li><a href='http://localhost/Hospital/app/client/pages/mantenimientos/'>Mantenimientos</a></li>
                         <li><a href='http://localhost/Hospital/app/client/pages/proveedores/'>Proveedores y contratos</a></li>
+                        <li><a href='http://localhost/Hospital/app/client/pages/consumibles/'>Consumibles</a></li>
                     </ul>
                 </li>
                 <li><a href=''>Acerca de</a></li>
