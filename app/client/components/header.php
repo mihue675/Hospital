@@ -70,6 +70,13 @@ $filasRecientes = array_values($filasRecientes);
             }
         });
     });
+
+    document.addEventListener('mousedown', function(event) {
+    if (event.detail > 1) {
+        event.preventDefault();
+    }
+    }, false);
+
 </script>
 
 
@@ -86,7 +93,7 @@ $filasRecientes = array_values($filasRecientes);
                         <li><a href='http://localhost/Hospital/app/client/pages/consumibles/'>Consumibles</a></li>
                     </ul>
                 </li>
-                <li><a href=''>Acerca de</a></li>
+                <li><a href='http://localhost/Hospital/app/client/sobreNosotros.php'>Sobre Nosotros</a></li>
             </ul>
             <div class="nav-right" style="position: relative;">
                 <span class="icon-bell" id="notification-icon">🔔</span>
