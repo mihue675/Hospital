@@ -8,6 +8,7 @@
 /* Contenedor del menú de navegación */
 .nav-container {
   display: flex;
+  font-family: Arial, sans-serif;
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
