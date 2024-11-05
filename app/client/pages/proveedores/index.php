@@ -14,7 +14,7 @@ if (!isset($_SESSION['idUsuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Gestión de proveedores y contratos</title>
     <link rel="icon" href="../../images/logo.png" />
-    <link href="index.css" rel="stylesheet" />
+    <link href="index.css" rel="stylesheet">
 </head>
 
 <?php
@@ -39,11 +39,20 @@ if (isset($_POST['btnEliminarContrato'])) {
 
 <body>
 
-    <main>
-        <h1>Gestión de proveedores y contratos</h1>
+    <header>
+        <?php require_once __DIR__ . "/../../components/header.php" ?>
+        <style>
+            <?php require_once __DIR__ . "/../../components/header.css" ?>
+        </style>
+    </header>
+    
+    <div class="contenedor-proveedores">
 
-        <a href="./alta-proveedores.php">Añadir un proveedor</a>
-        <a href="./alta-contratos.php">Asignar un nuevo contrato</a>
+    <main>
+        <h1>Gestión de proveedores y Contratos</h1>
+
+        <a class="enlaces" href="./alta-proveedores.php">Añadir un proveedor</a>
+        <a class="enlaces" href="./alta-contratos.php">Asignar un nuevo contrato</a>
 
         <!-- Tabla de contratos registrados -->
         <section>
@@ -119,6 +128,14 @@ if (isset($_POST['btnEliminarContrato'])) {
 
 
     </main>
+    </div>
+
+    <footer>
+        <?php require_once __DIR__ . "/../../components/footer.php" ?>
+        <style>
+            <?php require_once __DIR__ . "/../../components/footer.css" ?>
+        </style>
+    </footer>
 
 </body>
 
