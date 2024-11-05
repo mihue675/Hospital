@@ -49,7 +49,7 @@ require_once __DIR__ . "/../../../server/controller/consumibles.php";
                 ?> 
             </p>
             <p><strong>Cantidad mínima: </strong> <?php echo $filas[$i]['cantidad_minima'] ?> </p>
-            <button type="button" onclick="window.location.href = './editar.php'" class="btn-editar">Editar</button>
+            <button class="btnEditar" onclick="window.location.href='./editar.php?id=<?= $filas[$i]['id'] ?>'">Editar</button>
             </div>
         <?php
         }
