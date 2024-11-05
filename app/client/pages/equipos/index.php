@@ -150,6 +150,10 @@ if (isset($_POST['btnDarDeBaja'])) {
         <div>
             <button type="button" onclick="window.location.href = './alta.php'" class="btn-alta">Alta de equipo</button>
         </div>
+
+        <div>
+            <button type="button" onclick="window.location.href = './reporte.php'" class="btn-alta">Informe de estado</button>
+        </div>
     </div>
 
     <div class="contenedor-equipos">
