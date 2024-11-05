@@ -1,3 +1,115 @@
-.estado-vigente { background-color: lightgreen; }
-.estado-proximo { background-color: yellow; }
-.estado-expirado { background-color: red; }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0e0e0;
+    margin: 0;
+}
+
+
+main {
+    background-color: #ffffff;
+    /*border-radius: 10px;  Bordes redondeados */
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1500px;
+    width: 100%;
+}
+
+
+h1 {
+    font-size: 24px;
+    color: #333333;
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    color: #333333;
+    margin-top: 20px;
+}
+
+/* Estilos para los enlaces de navegación */
+.enlaces {
+    display: inline-block;
+    background-color: #00796b;
+    color: white;
+    padding: 10px 15px;
+    margin: 10px 5px 20px 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+a:hover {
+    background-color: #118a7c;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Elimina los espacios entre celdas */
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd; /* Borde suave */
+}
+
+th {
+    background-color: #00796b; /* Fondo de encabezado */
+    color: white;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+
+button {
+    background-color: #00796b;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 2px;
+}
+
+button:hover {
+    background-color: #118a7c;
+}
+
+
+.estado-expirado {
+    color: #d32f2f; 
+    font-weight: bold;
+}
+
+.estado-proximo {
+    color: #ff9800; 
+    font-weight: bold;
+}
+
+.estado-vigente {
+    color: #388e3c;
+    font-weight: bold;
+}
+
+
+.tablaContratos, .tablaProveedores {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.contenedor-proveedores {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5em;
+}

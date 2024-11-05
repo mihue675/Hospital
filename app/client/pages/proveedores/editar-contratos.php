@@ -11,6 +11,7 @@ if (!isset($_SESSION['idUsuario'])) {
 <head>
     <html translate="no">
     <meta charset="UTF-8">
+    <link href="editar-contratos.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Contrato</title>
     <link rel="icon" href="../../images/logo.png" />
@@ -49,8 +50,17 @@ if (
 ?>
 
 <body>
-    <main>
-        <h1>Editar Contrato</h1>
+
+    <header>
+        <?php require_once __DIR__ . "/../../components/header.php" ?>
+        <style>
+            <?php require_once __DIR__ . "/../../components/header.css" ?>
+        </style>
+    </header>
+
+    <div class="contenedor">
+    <div class="form-container">
+    <h1>Editar Contrato</h1>
         <div class="formProveedor">
             <form method="post" action="">
                 <label>
@@ -82,12 +92,25 @@ if (
                     Costos:
                     <input type="number" name="numCosto" id="numCosto" value="<?php echo $contrato['costos']; ?>">
                 </label>
-                <button type="submit" name="btnEditarContrato" id="btnEditarContrato">Guardar Cambios</button>
+                <div class="button-group">
+                    <button type="button" name="btnVolver" onclick="window.location.href='./index.php'">Volver</button>
+                    <button type="submit" name="btnEditarContrato" id="btnEditarContrato">Guardar Cambios</button>
+                </div>
             </form>
-            <button name="btnVolver" onclick="window.location.href='./index.php'">Volver</button>
+            
         </div>
 
-    </main>
+    </div>
+    </div>
+
+        
+    <footer>
+        <?php require_once __DIR__ . "/../../components/footer.php" ?>
+        <style>
+            <?php require_once __DIR__ . "/../../components/footer.css" ?>
+        </style>
+    </footer>
+
 </body>
 
 </html>
