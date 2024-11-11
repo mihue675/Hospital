@@ -13,6 +13,7 @@ function IniciarSesion($email, $contraseña)
     if ($resultado > 0) {
         if (password_verify($contraseña, $resultado['contraseña']) /* Verificar si la contraseña ingresada coincide.*/) {
             $_SESSION['idUsuario'] = $resultado['id'];
+            $_SESSION['id_rol'] = $resultado['id_rol'];
             $b = 1;
         };
     }

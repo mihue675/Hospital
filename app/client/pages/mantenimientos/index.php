@@ -18,7 +18,6 @@ if (!isset($_SESSION['idUsuario'])) {
 
     <script>
         function AsignarTecnico(id_mantenimiento, id_tecnico) {
-            console.log(id_mantenimiento, id_tecnico)
             const xhr = new XMLHttpRequest();
             xhr.open("POST", "index.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
