@@ -173,6 +173,7 @@ if (isset($_POST['tecnico']) && $_POST['tecnico'] != "") {
 
     <div class="contenedor-btn">
         <button class="btn" onclick="window.location.href='./alta.php'">Nuevo mantenimiento</button>
+        <button class="btn" onclick="window.location.href='./control.php'">Mis mantenimientos</button>
     </div>
 
     <div class=" contenedor">
