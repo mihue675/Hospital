@@ -25,8 +25,16 @@ if (isset($_POST['btnAsignar']) && $_POST['txtEquipo'] != "" && $_POST['txtMante
     $id_equipo = $_POST['txtEquipo'];
     $fecha = $_POST['txtMantenimiento'];
     $tipo = "Preventivo";
-    AltaMantenimiento($id_equipo, $fecha, $tipo);
-    header("Location: index.php");
+
+    if(TieneMantenimiento($id_equipo, $tipo) == true) { // si ya tiene un preventivo, no puede tener más.
+        echo '<script type="text/javascript">
+        window.onload = function () { alert("Este equipo ya tiene un mantenimiento preventivo asignado."); } 
+        </script>';
+    }
+    else {
+        AltaMantenimiento($id_equipo, $fecha, $tipo);
+        header("Location: index.php");
+    }
 }
 
 // Mantenimiento correctivo.
@@ -35,6 +43,7 @@ if (isset($_POST['btnReportar']) && $_POST['txtEquipoCorrectivo'] != "" && $_POS
     $tipo = "Correctivo";
     $descripcion = $_POST['txtFallo'];
     AltaMantenimiento($id_equipo, "", $tipo, $descripcion);
+    CambiarEstado($id_equipo, "En mantenimiento"); // se q en el index igual nos fijamos, pero el cambio deberia reflejarse de inmediato en la bd.
     header("Location: index.php");
 }
 ?>

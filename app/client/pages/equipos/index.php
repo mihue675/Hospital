@@ -160,7 +160,13 @@ if (isset($_POST['btnDarDeBaja'])) {
         <?php
         $filas = ObtenerEquipos();
         foreach ($filas as $equipo) {
-        ?>
+            
+            //como un equipo puede tener varios correctivos, por mas que borremos uno tenemos q fijarnos si le queda otro para reasignarle el estado.
+            if (TieneMantenimiento($equipo['id'], 'correctivo')) { 
+                CambiarEstado($equipo['id'], 'En mantenimiento');
+            }
+            ?>
+
             <div class="equipo" data-categoria="<?php echo $equipo['id_categoria']; ?>">
                 <p class="p"><strong>Marca:</strong> <?php echo $equipo['marca']; ?></p>
                 <p class="p"><strong>Nombre:</strong> <?php echo $equipo['nombre']; ?></p>

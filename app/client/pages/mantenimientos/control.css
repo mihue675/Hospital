@@ -5,7 +5,7 @@ body {
     overflow: scroll;
 }
 
-.contenedor-filtros {
+.contenedor-titulos {
     background-color: #00796B;
     padding: 15px;
     border-radius: 10px;
@@ -18,30 +18,18 @@ body {
     width: 900px;
 }
 
-.contenedor-filtros span {
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 20px;
+.contenedor-btn {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    
 }
 
-.contenedor-filtros select,
-select {
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 15px;
-    background-color: white;
-}
-
-select {
-    margin-left: 10px;
-}
 
 .contenedor {
     display: grid;
-    grid-template-columns: repeat(4, minmax(350px, 1fr)); /* Asegúrate de ajustar el minmax según lo necesario */
-    gap: 15px; /* Reduce el espacio entre las cards */
+    grid-template-columns: repeat(4, minmax(350px, 1fr));
+    gap: 15px;
     width: 100%;
     margin-bottom: 5em;
     margin-top: 5em;
@@ -52,8 +40,8 @@ select {
     border: 3px solid #00796B;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px; /* Ajusta el padding según sea necesario */
-    margin: 0; /* Elimina márgenes adicionales */
+    padding: 10px;
+    margin: 0;
 }
 
 
@@ -69,17 +57,6 @@ select {
     margin-top: 10px;
 }
 
-.mantenimiento select {
-    background-color: #ECEFF1;
-    border: 1px solid #37474F;
-    margin-left: 5px;
-}
-
-.contenedor-btn {
-   display: flex;
-   justify-content: center;
-   padding-top: 2em;
-}
 
 .btn {
     background-color: #00796b;
@@ -88,8 +65,6 @@ select {
     font-size: 18px;
     border: none;
     border-radius: 4px;
-    margin-right: 10px;
-    margin-left: 10px;
     cursor: pointer;
 }
 
