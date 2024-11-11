@@ -24,7 +24,7 @@ if (isset($_SESSION['idUsuario']) && $_SESSION['id_rol'] != 1) {
 <script>
     function AsignarRol(id_usuario, id_rol) {
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "asignacion.php", true);
+        xhr.open("POST", "index.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
