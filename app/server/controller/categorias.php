@@ -2,6 +2,13 @@
 // Importamos la conexión a la base de datos.
 require_once __DIR__ . "/../db.php";
 
+function AltaCategoria($categoria){
+    global $conn;
+    $sql = "INSERT INTO categorias (nombre) VALUES ('$categoria')";
+    mysqli_query($conn, $sql);
+}
+
+
 function ObtenerCategorias()
 {
     global $conn;
