@@ -99,12 +99,12 @@ $filasConsumibles = array_values($filasConsumibles);
                     <a>Servicios</a>
                     <ul class='submenu'>
                         <li><a href='http://localhost/Hospital/app/client/pages/equipos/'>Equipos</a></li>
-                        <li><a href='http://localhost/Hospital/app/client/pages/mantenimientos/'>Mantenimientos</a></li>
-                        <li><a href='http://localhost/Hospital/app/client/pages/proveedores/'>Proveedores y contratos</a></li>
-                        <li><a href='http://localhost/Hospital/app/client/pages/consumibles/'>Consumibles</a></li>
-                        <li><a href='http://localhost/Hospital/app/client/pages/reservas/'>Reservas</a></li>
-                        <li><a href='http://localhost/Hospital/app/client/pages/mantenimientos/control.php'>Mis mantenimientos</a></li>
-                        <li><a href='http://localhost/Hospital/app/client/pages/roles/'>Gestión de usuarios</a></li>
+                        <li style="<?php if ($_SESSION['id_rol'] != 1) echo "display: none;" ?>"><a href='http://localhost/Hospital/app/client/pages/mantenimientos/'>Mantenimientos</a></li>
+                        <li style="<?php if ($_SESSION['id_rol'] != 1) echo "display: none;" ?>"><a href='http://localhost/Hospital/app/client/pages/proveedores/'>Proveedores y contratos</a></li>
+                        <li style="<?php if ($_SESSION['id_rol'] != 1) echo "display: none;" ?>"><a href='http://localhost/Hospital/app/client/pages/consumibles/'>Consumibles</a></li>
+                        <li style="<?php if ($_SESSION['id_rol'] == 3) echo "display: none;" ?>"><a href='http://localhost/Hospital/app/client/pages/reservas/'>Reservas</a></li>
+                        <li style="<?php if ($_SESSION['id_rol'] != 3) echo "display: none;" ?>"><a href='http://localhost/Hospital/app/client/pages/mantenimientos/control.php'>Mis mantenimientos</a></li>
+                        <li style="<?php if ($_SESSION['id_rol'] != 1) echo "display: none;" ?>"><a href='http://localhost/Hospital/app/client/pages/roles/'>Gestión de usuarios</a></li>
                     </ul>
                 </li>
                 <li><a href='http://localhost/Hospital/app/client/sobreNosotros.php'>Sobre Nosotros</a></li>
