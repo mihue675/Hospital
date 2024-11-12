@@ -3,6 +3,10 @@ session_start();
 if (!isset($_SESSION['idUsuario'])) {
     header("Location: ../../index.php");
 }
+
+if (isset($_SESSION['idUsuario']) && $_SESSION['id_rol'] != 1) {
+    header("Location: ../../error-permisos.php");
+}
 ?>
 
 

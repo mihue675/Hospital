@@ -7,6 +7,10 @@ if (!isset($_SESSION['idUsuario'])) {
     exit();
 }
 
+if (isset($_SESSION['idUsuario']) && $_SESSION['id_rol'] != 1) {
+    header("Location: ../../error-permisos.php");
+}
+
 $equipos = ObtenerEquipos();
 ?>
 <html>
