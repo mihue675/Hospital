@@ -48,6 +48,20 @@ function ObtenerMantenimientos()
     return $array;
 }
 
+function ObtenerMantenimientosPorID_TIPO($id_equipo, $tipo) 
+{
+ global $conn;
+    $sql = "SELECT * FROM mantenimientos WHERE id_equipo = $id_equipo AND tipo = '$tipo' ";
+    $query = mysqli_query($conn, $sql);
+
+    $array = array();
+    while ($i = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+        $array[] = $i;
+    }
+
+    return $array;
+}
+
 function AsignarTecnico($id_mantenimiento, $id_tecnico)
 {
     global $conn;
@@ -86,17 +100,22 @@ function TieneMantenimiento($id_equipo, $tipo):bool // tiene mantenimientos de e
     return true;
 }
 
-function BajaMantenimiento($id_mantenimiento)
+function BajaMantenimiento($id_mantenimiento) // cuando las borrro ahora los mando a una tabla llamada historial_mantenimientos
 {
     global $conn;
-
-    $sql = "SELECT id_equipo FROM mantenimientos WHERE id = $id_mantenimiento";
+    $sql = "SELECT * FROM mantenimientos WHERE id = $id_mantenimiento";
     $query = mysqli_query($conn, $sql);
-    $resultado = mysqli_fetch_array($query, MYSQLI_ASSOC);
-    $id_equipo = $resultado['id_equipo'];
+    $mantenimiento = mysqli_fetch_array($query, MYSQLI_ASSOC);
 
-    CambiarEstado($id_equipo, "Disponible");
+    if ($mantenimiento) {
+        $sql_historial = "INSERT INTO historial_mantenimientos (id, id_equipo, fecha, tipo, descripcion, id_tecnico) 
+                          VALUES ('{$mantenimiento['id']}', '{$mantenimiento['id_equipo']}', '{$mantenimiento['fecha']}', 
+                                  '{$mantenimiento['tipo']}', '{$mantenimiento['descripcion']}', '{$mantenimiento['id_tecnico']}')";
+        mysqli_query($conn, $sql_historial);
 
-    $sql = "DELETE FROM mantenimientos WHERE id = $id_mantenimiento";
-    mysqli_query($conn, $sql);
+        CambiarEstado($mantenimiento['id_equipo'], "Disponible");
+
+        $sql_delete = "DELETE FROM mantenimientos WHERE id = $id_mantenimiento";
+        mysqli_query($conn, $sql_delete);
+    }
 }

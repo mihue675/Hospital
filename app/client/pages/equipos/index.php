@@ -108,6 +108,7 @@ if (!isset($_SESSION['idUsuario'])) {
 require_once __DIR__ . "/../../../server/controller/equipos.php";
 require_once __DIR__ . "/../../../server/controller/categorias.php";
 require_once __DIR__ . "/../../../server/controller/proveedores.php";
+require_once __DIR__ . "/../../../server/controller/reservas.php";
 
 if (isset($_POST['estado']) && $_POST['estado'] != "") {
     $id = $_POST['id'];
@@ -159,11 +160,34 @@ if (isset($_POST['btnDarDeBaja'])) {
     <div class="contenedor-equipos">
         <?php
         $filas = ObtenerEquipos();
-        foreach ($filas as $equipo) {
-            
+        foreach ($filas as $equipo) { // el for each completo es un checkeo de en que estado deberia estar cada equipo.
+            CambiarEstado($equipo['id'], 'Disponible');
+            $fecha_actual = new DateTime();
             //como un equipo puede tener varios correctivos, por mas que borremos uno tenemos q fijarnos si le queda otro para reasignarle el estado.
             if (TieneMantenimiento($equipo['id'], 'correctivo')) { 
                 CambiarEstado($equipo['id'], 'En mantenimiento');
+            }
+            
+                // si tiene algun mantenimiento preventivo que se cumpla hoy, lo ponemos en mantenimiento
+            if (TieneMantenimiento($equipo['id'], 'Preventivo')) {
+                $preventivo = ObtenerMantenimientosPorID_TIPO($equipo['id'], 'Preventivo');
+                $fecha_vencimiento = new DateTime($preventivo[0]['fecha']); 
+                if ($fecha_actual >= $fecha_vencimiento) {
+                    CambiarEstado($equipo['id'], 'En mantenimiento');
+                }
+            }
+            $fecha_actual_str = $fecha_actual->format('Y-m-d'); // formato para comparar con reservas
+
+            $reservas = ObtenerReservasPorEquipo($equipo['id']);
+            // si tiene alguna reserva para hoy, se pone en uso. esto esta arriba del mantenimiento, me imagino?
+            foreach ($reservas as $reserva) {
+                $fecha_inicio = new DateTime($reserva['fecha_inicio']);
+                $fecha_fin = new DateTime($reserva['fecha_fin']);
+                $fecha_inicio_str = $fecha_inicio->format('Y-m-d');
+                $fecha_fin_str = $fecha_fin->format('Y-m-d');         
+                if ($fecha_actual >= $fecha_inicio && $fecha_actual <= $fecha_fin) {
+                    CambiarEstado($equipo['id'], 'En uso');
+                }
             }
             ?>
 
