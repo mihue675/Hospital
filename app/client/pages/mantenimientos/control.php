@@ -44,7 +44,7 @@ if (isset($_POST['finalizar_mantenimiento'])) {
 </div>
 
 <div class="contenedor-btn">
-    <button class="btn" onclick="window.location.href='./index.php'">Volver</button>
+    <button class="btn" onclick="window.location.href='../../index.php'">Volver</button>
 </div>
 
 <div class="contenedor">
@@ -52,7 +52,7 @@ if (isset($_POST['finalizar_mantenimiento'])) {
     $filas = ObtenerMantenimientosPorTecnico($id_tecnico);
 
     if (empty($filas)) : ?>
-        <p style="text-align: center; font-weight: bold;">Usted no tiene ningún mantenimiento asignado</p>
+        <p style="text-align: center; font-weight: bold;">Usted no tiene ningún mantenimiento asignado.</p>
     <?php else : 
         foreach ($filas as $fila) :
             $fecha_actual = new DateTime();
