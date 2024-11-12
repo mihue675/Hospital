@@ -63,3 +63,10 @@ function CambiarEstado($id, $estado)
     $sql = "UPDATE equipos SET estado = '$estado' WHERE id = $id";
     mysqli_query($conn, $sql);
 }
+
+function AltaEquipoConsumible($equipo_id, $consumible_id, $cantidad) 
+{
+    global $conn;
+    $sql = "INSERT INTO equipos_consumibles(id_equipo, id_consumible, cantidad) VALUES ($equipo_id, $consumible_id, $cantidad)";
+    mysqli_query($conn, $sql);
+}
