@@ -40,3 +40,30 @@ function ObtenerReservas()
 
     return $array;
 }
+
+function ObtenerEstadisticasEquiposPorDias() {
+    $reservas = ObtenerReservas();
+    $estadisticas = [];
+
+    foreach ($reservas as $reserva) {
+        $id_equipo = $reserva['id_equipo'];
+        
+        // Calcular la cantidad de días de la reserva
+        $fecha_inicio = new DateTime($reserva['fecha_inicio']);
+        $fecha_fin = new DateTime($reserva['fecha_fin']);
+        $dias_reserva = $fecha_fin->diff($fecha_inicio)->days;
+
+        // Sumar los días al equipo correspondiente
+        if (!isset($estadisticas[$id_equipo])) {
+            $estadisticas[$id_equipo] = $dias_reserva;
+        } else {
+            $estadisticas[$id_equipo] += $dias_reserva;
+        }
+    }
+
+    // Ordenar los equipos por días reservados de mayor a menor
+    arsort($estadisticas);
+
+    return $estadisticas;
+}
+
