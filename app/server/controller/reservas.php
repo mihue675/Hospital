@@ -27,4 +27,16 @@ function EliminarReserva($id_reserva) {
     mysqli_query($conn, $sql);
 }
 
+function ObtenerReservas()
+{
+    global $conn;
+    $sql = "SELECT * FROM reservas";
+    $query = mysqli_query($conn, $sql);
 
+    $array = array();
+    while ($i = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+        $array[] = $i;
+    }
+
+    return $array;
+}

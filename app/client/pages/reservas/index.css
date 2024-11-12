@@ -113,3 +113,8 @@ button:focus {
     max-height: 70vh;
     margin-bottom: 220px;
 }
+
+.btnHistorial {
+    margin-top: 250px;
+    width:100%;
+}

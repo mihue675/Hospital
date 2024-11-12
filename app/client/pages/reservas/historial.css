@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ECEFF1;
+    overflow-y: scroll;
+}
+
+.h1{
+    display:flex;
+    justify-content: center;
+}
+
+h1{
+    color:#00796B;
+    font-size: 50px;
+}
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(250px, 1fr)); 
+    gap: 15px; 
+    width: 100%;
+    margin-bottom: 5em;
+    margin-top: 2em;
+}
+
+.reserva {
+    background-color: white;
+    border: 3px solid #00796B;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px; 
+    margin: 0; 
+}
+
+
+.reserva p {
+    font-size: 16px;
+    color: #37474F;
+    margin: 20px 0;
+}
+
+
