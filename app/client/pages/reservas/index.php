@@ -3,6 +3,11 @@ session_start();
 if (!isset($_SESSION['idUsuario'])) {
     header("Location: ../../index.php");
 }
+
+if (isset($_SESSION['idUsuario']) && $_SESSION['id_rol'] == 3) {
+    header("Location: ../../error-permisos.php");
+}
+
 include '../../components/calendar.php';
 include_once __DIR__ . "/../../../server/controller/equipos.php";
 include_once __DIR__ . "/../../../server/controller/reservas.php";

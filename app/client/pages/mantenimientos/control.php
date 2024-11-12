@@ -5,6 +5,10 @@ if (!isset($_SESSION['idUsuario'])) {
     exit();
 }
 
+if (isset($_SESSION['idUsuario']) && $_SESSION['id_rol'] != 3) {
+    header("Location: ../../error-permisos.php");
+}
+
 include_once __DIR__ . "/../../../server/controller/equipos.php";
 include_once __DIR__ . "/../../../server/controller/mantenimientos.php";
 
