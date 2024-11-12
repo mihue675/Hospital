@@ -114,7 +114,10 @@ button:focus {
     margin-bottom: 220px;
 }
 
+.formulario-reserva {
+    margin-bottom: 250px;
+}
+
 .btnHistorial {
-    margin-top: 250px;
     width:100%;
 }

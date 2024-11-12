@@ -29,6 +29,7 @@ if (!empty($_POST['txtEquipoReserva'])) {
 }
 
 if (isset($_POST['btnAsignar'])) {
+    echo "<script>alert('hola')</script>";
     $id_equipo = $_POST['txtEquipoReserva'];
     $fecha_inicio = $_POST['txtFechaInicio'];
     $fecha_fin = $_POST['txtFechaFin'];
@@ -77,7 +78,6 @@ if (isset($_POST['btnAsignar'])) {
     <title>Reservas</title>
     <link rel="icon" href="../../images/logo.png" />
     <link rel="stylesheet" href="index.css" />
-    <link href="../../components/calendar.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -89,10 +89,10 @@ if (isset($_POST['btnAsignar'])) {
     </header>
     <div class="contenedor-calendario">
         <div class="div formulario">
-            <form method="post" action="index.php">
+            <form method="post" action="index.php" class="formulario-reserva">
                 <h2>Asignar una reserva</h2>
                 </br>
-                <select name="txtEquipoReserva" id="txtEquipoReserva" onchange="this.form.submit()"> <!-- todo depende de ese onchange, si no no se actualiza el calendario -->
+                <select name="txtEquipoReserva" id="txtEquipoReserva" onchange="this.form.submit()" required> <!-- todo depende de ese onchange, si no no se actualiza el calendario -->
                     <option disabled <?= empty($_POST['txtEquipoReserva']) ? 'selected' : '' ?> value="">Seleccionar
                         Equipo</option>
                     <?php
@@ -104,7 +104,7 @@ if (isset($_POST['btnAsignar'])) {
                     ?>
                 </select>
                 </br>
-                <select name="txtPrioridad" id="txtPrioridad">
+                <select name="txtPrioridad" id="txtPrioridad" required>
                     <option disabled selected value="">Prioridad</option>
                     <option value="Alta">Alta</option>
                     <option value="Baja">Baja</option>
@@ -122,11 +122,14 @@ if (isset($_POST['btnAsignar'])) {
                 </br>
                 <button type="submit" name="btnAsignar" class="btn-alta">Reservar</button>
             </form>
-            <button class="btnHistorial" onclick="window.location.href='./historial.php'">Historial de reservas</button>
+            <button type="button" class="btnHistorial" onclick="window.location.href='./historial.php'">Historial de reservas</button>
         </div>
 
         <div class="calendario"> <!-- aqui se muestra el calendario nada mas-->
             <?php echo $calendar; ?>
+            <style>
+                <?php require_once __DIR__ . "/../../components/calendar.css" ?>
+            </style>
         </div>
     </div>
 

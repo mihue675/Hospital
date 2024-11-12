@@ -43,7 +43,7 @@ require_once __DIR__ . "/../../../server/controller/usuarios.php";
     </div>
 
     <div class="contenedor-btn">
-    <button class="btn" onclick="window.location.href='./index.php'">Volver</button>
+        <button class="btn" onclick="window.location.href='./index.php'">Volver</button>
     </div>
 
     <div class="contenedor">
