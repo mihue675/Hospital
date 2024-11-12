@@ -46,7 +46,7 @@ if (isset($_POST['btnAsignar'])) {
                 if ($reserva['prioridad'] === "Baja") {
                     EliminarReserva($reserva['id']);
                 } elseif ($reserva['prioridad'] === "Alta") {
-                    $conflicto = true;  // Asegúrate de marcar conflicto en caso de prioridad alta
+                    $conflicto = true;  // marcar conflicto en caso de prioridad alta
                     echo "<script>alert('Conflicto con una reserva de alta prioridad existente. No se puede realizar la nueva reserva.');</script>";
                     break;
                 }
@@ -54,9 +54,9 @@ if (isset($_POST['btnAsignar'])) {
         }
     }
 
-    if (!$conflicto) {
+    if (!$conflicto) { // creamos solo si no hay conflictos.
         CrearReserva($id_equipo, $id_usuario, $fecha_inicio, $fecha_fin, $prioridad);
-        header("Location: index.php?txtEquipoReserva=$id_equipo"); // comenta esta línea temporalmente
+        header("Location: index.php?txtEquipoReserva=$id_equipo");
         exit();
     }
 }
