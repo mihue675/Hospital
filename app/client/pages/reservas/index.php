@@ -122,6 +122,7 @@ if (isset($_POST['btnAsignar'])) {
                 </br>
                 <button type="submit" name="btnAsignar" class="btn-alta">Reservar</button>
             </form>
+            <button class="btnHistorial" onclick="window.location.href='./historial.php'">Historial de reservas</button>
         </div>
 
         <div class="calendario"> <!-- aqui se muestra el calendario nada mas-->
