@@ -32,7 +32,6 @@ if (isset($_POST['btnAsignar'])) {
     // empezamos asumiendo q no hay conflicto
     $reservas_existentes = ObtenerReservasPorEquipo($id_equipo);
     $conflicto = false;
-    $alerta_conflicto = false;
 
     foreach ($reservas_existentes as $reserva) {
         // las fechas se solapan?
@@ -40,15 +39,14 @@ if (isset($_POST['btnAsignar'])) {
 
         if ($hay_conflicto_fechas) {
             if ($prioridad === "Baja") {
-                // si la nueva reserva es de baja prioridad y hay conflicto, a la casa
                 $conflicto = true;
-                echo "<script>alert('Conflicto con otra reserva de baja prioridad. Si es de urgencia, reserve con alta prioridad.');</script>";
+                echo "<script>alert('Conflicto con otra reserva. Si es de urgencia, intente reservar con alta prioridad.');</script>";
                 break;
             } elseif ($prioridad === "Alta") {
                 if ($reserva['prioridad'] === "Baja") {
-                    // si la nueva reserva es de alta prioridad y hay conflicto con baja, delete a la baja
                     EliminarReserva($reserva['id']);
                 } elseif ($reserva['prioridad'] === "Alta") {
+                    $conflicto = true;  // Asegúrate de marcar conflicto en caso de prioridad alta
                     echo "<script>alert('Conflicto con una reserva de alta prioridad existente. No se puede realizar la nueva reserva.');</script>";
                     break;
                 }
@@ -57,9 +55,8 @@ if (isset($_POST['btnAsignar'])) {
     }
 
     if (!$conflicto) {
-        // si no hay conflicto se crea
         CrearReserva($id_equipo, $id_usuario, $fecha_inicio, $fecha_fin, $prioridad);
-        header("Location: index.php?txtEquipoReserva=$id_equipo"); // tengo q refrescar si o si la pagina sino no se muestra nada
+        header("Location: index.php?txtEquipoReserva=$id_equipo"); // comenta esta línea temporalmente
         exit();
     }
 }
