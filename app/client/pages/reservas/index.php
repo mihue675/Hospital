@@ -123,6 +123,7 @@ if (isset($_POST['btnAsignar'])) {
                 <button type="submit" name="btnAsignar" class="btn-alta">Reservar</button>
             </form>
             <button style="<?php if ($_SESSION['id_rol'] != 1) echo "display: none;" ?>" type="button" class="btnHistorial" onclick="window.location.href='./historial.php'">Historial de reservas</button>
+            <button style="<?php if ($_SESSION['id_rol'] != 1) echo "display: none;" ?>" type="button" class="btnHistorial" onclick="window.location.href='./estadisticas.php'">Estadísticas de reservas</button>
         </div>
 
         <div class="calendario"> <!-- aqui se muestra el calendario nada mas-->
