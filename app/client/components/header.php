@@ -1,8 +1,11 @@
 <?php
 require_once __DIR__ . "/../../server/controller/mantenimientos.php";
 require_once __DIR__ . "/../../server/controller/equipos.php";
+require_once __DIR__ . "/../../server/controller/consumibles.php";
 
 $idUsuario = $_SESSION['idUsuario'];
+
+// Notificación de próximos mantenimientos.
 
 $filas = ObtenerMantenimientosPorTecnico($idUsuario);
 
@@ -39,6 +42,15 @@ $filasRecientes = array_filter($filas, function ($fila) use ($hoy, &$diferencias
 
 // Reindexar el array de filas recientes
 $filasRecientes = array_values($filasRecientes);
+
+
+// Notificación de baja de stock.
+$filasConsumibles = ObtenerConsumibles();
+$filasConsumibles = array_filter($filasConsumibles, function ($consumible) {
+    return $consumible['cantidad'] < $consumible['cantidad_minima'];
+});
+
+$filasConsumibles = array_values($filasConsumibles);
 ?>
 
 <!DOCTYPE html>
@@ -72,11 +84,10 @@ $filasRecientes = array_values($filasRecientes);
     });
 
     document.addEventListener('mousedown', function(event) {
-    if (event.detail > 1) {
-        event.preventDefault();
-    }
+        if (event.detail > 1) {
+            event.preventDefault();
+        }
     }, false);
-
 </script>
 
 
@@ -107,7 +118,7 @@ $filasRecientes = array_values($filasRecientes);
                         <?php
                         for ($i = 0; $i < (count($filasRecientes)); $i++) {
                         ?>
-                            <a href="#" class="mantenimiento-link">
+                            <a class="mantenimiento-link">
                                 <div class="mantenimiento-notificacion">
                                     <h4>¡Próximo mantenimiento!</h4>
                                     <p><strong>Equipo:</strong> <?= ObtenerEquipoPorId($filasRecientes[$i]['id_equipo'])['nombre']; ?></p>
@@ -127,13 +138,37 @@ $filasRecientes = array_values($filasRecientes);
                         <?php
                         }
                         ?>
-                    <?php } else { ?>
+                    <?php
+                    }
+                    ?>
+
+                    <!-- Notificación baja de stock !-->
+                    <?php
+                    if ($_SESSION['id_rol'] == 1 && count($filasConsumibles) > 0) {
+                        for ($i = 0; $i < count($filasConsumibles); $i++) {
+                    ?>
+                            <div class="mantenimiento-notificacion">
+                                <h4>¡Stock Bajo!</h4>
+                                <p><strong>Insumo: <?php echo $filasConsumibles[$i]['nombre'] ?></strong></p>
+                                <p><strong>Stock Actual: <?php echo $filasConsumibles[$i]['cantidad'] ?></strong></p>
+                                <p><strong>Punto de reposición : <?php echo $filasConsumibles[$i]['cantidad_minima'] ?></strong></p>
+                            </div>
+                    <?php
+                        }
+                    }
+                    ?>
+
+                    <?php
+                    if (count($filasRecientes) == 0 && count($filasConsumibles) == 0) {
+                    ?>
                         <a href="#" class="mantenimiento-link">
                             <div class="mantenimiento-notificacion">
                                 <h4>Sin notificaciones</h4>
                             </div>
                         </a>
-                    <?php } ?>
+                    <?php
+                    }
+                    ?>
                 </div>
                 <a href="http://localhost/Hospital/app/client/pages/auth/cerrar-sesion.php" class="logout">Cerrar Sesión</a>
             </div>
