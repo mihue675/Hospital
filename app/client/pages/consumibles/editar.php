@@ -67,7 +67,7 @@ if (
         </label>
         <br/>
         <label class="label">
-            Cantidad mínima:
+            Punto de reposición:
             <input type="number" name="txtCantidadMinima" id="txtCantidadMinima" value="<?php echo $consumible['cantidad_minima']; ?>" required />
         </label>
         <br/>

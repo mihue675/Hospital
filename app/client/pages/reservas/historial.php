@@ -42,6 +42,10 @@ require_once __DIR__ . "/../../../server/controller/usuarios.php";
         <h1>Historial de reservas</h1>
     </div>
 
+    <div class="contenedor-btn">
+    <button class="btn" onclick="window.location.href='./index.php'">Volver</button>
+    </div>
+
     <div class="contenedor">
         <?php
         $filas = ObtenerReservas();
