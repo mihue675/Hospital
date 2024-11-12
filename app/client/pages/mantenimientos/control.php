@@ -54,6 +54,8 @@ if (isset($_POST['finalizar_mantenimiento'])) {
             $fecha_actual = new DateTime();
             $fecha_vencimiento = new DateTime($fila['fecha']);
             $dias_restantes = $fecha_actual->diff($fecha_vencimiento)->days;
+            $fecha_actual = $fecha_actual->format('Y-m-d');
+            $fecha_vencimiento = $fecha_vencimiento->format('Y-m-d');
             $id_mantenimiento = $fila['id'];
             $id_equipo = $fila['id_equipo'];
             $tipo_mantenimiento = $fila['tipo'];
@@ -74,11 +76,17 @@ if (isset($_POST['finalizar_mantenimiento'])) {
                 <?php endif; ?>
 
                 <?php if ($tipo_mantenimiento == "Preventivo") : ?>
-                    <?php if ($fecha_vencimiento > $fecha_actual) : ?>
+                    <?php                        
+                        if ($fecha_vencimiento > $fecha_actual) : ?>
                         <p><strong>Días restantes para el próximo mantenimiento:</strong> <?= $dias_restantes ?> días</p>
                     <?php elseif ($fecha_vencimiento == $fecha_actual) : 
                         CambiarEstado($id_equipo, "En mantenimiento"); ?>
                         <p><strong>Estado:</strong> En mantenimiento (Hoy es el día del mantenimiento preventivo)</p>
+
+                        <?php elseif ($fecha_vencimiento < $fecha_actual) : 
+                        CambiarEstado($id_equipo, "En mantenimiento"); ?>
+                        <p><strong>Estado:</strong> En mantenimiento (Mantenimiento preventivo atrasado.)</p>
+
                     <?php endif; ?>
                 <?php endif; ?>
 
