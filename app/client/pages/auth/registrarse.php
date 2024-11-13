@@ -11,9 +11,10 @@
 
 <?php
 require_once __DIR__ . "/../../../server/controller/auth.php";
-
+$result;
 if (isset($_POST['btnRegistrarse']) && $_POST['txtEmail'] != "" && $_POST['txtContraseña'] != "" && $_POST['txtNombre'] != "" && $_POST['txtApellido'] != "") {
-    if (Registrar($_POST['txtNombre'], $_POST['txtApellido'], $_POST['txtEmail'], $_POST['txtContraseña'])) {
+    $result = Registrar($_POST['txtNombre'], $_POST['txtApellido'], $_POST['txtEmail'], $_POST['txtContraseña']);
+    if ($result == 1) {
         header("Location: ../../index.php");
     }
 }
@@ -40,7 +41,7 @@ if (isset($_POST['btnRegistrarse']) && $_POST['txtEmail'] != "" && $_POST['txtCo
                 <div class="grupo-formulario">
                     <label>
                         Email:
-                        <input type=" email" name="txtEmail" id="txtEmail" value="" required />
+                        <input type="email" name="txtEmail" id="txtEmail" value="" required />
                     </label>
                     <br />
                     <label>
@@ -48,6 +49,11 @@ if (isset($_POST['btnRegistrarse']) && $_POST['txtEmail'] != "" && $_POST['txtCo
                         <input type="password" name="txtContraseña" id="txtContraseña" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Debe contener al menos un número, una letra mayúscula y minúscula, y al menos 8 o más caracteres" required />
                     </label>
                     <br />
+                    <span style="display: none;<?php 
+                        if($result == 0 && isset($_POST['btnRegistrarse']) && $_POST['txtEmail'] != "" && $_POST['txtContraseña'] != "" && $_POST['txtNombre'] != "" && $_POST['txtApellido'] != "") {
+                        echo "display: block; color: red;";
+                    }
+                    ?>">Usuario ya registrado</span>
                     <button type="submit" name="btnRegistrarse" class="btn" id="btnRegistrarse">Registrarse</button>
                 </div>
             </form>

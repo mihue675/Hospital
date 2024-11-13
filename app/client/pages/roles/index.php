@@ -65,7 +65,10 @@ if (isset($_POST['rol']) && $_POST['rol'] != "") {
         $filas = ObtenerUsuarios();
         for ($i = 0; $i < count($filas); $i++) {
         ?>
-            <div class="usuario">
+        <?php 
+        if($_SESSION['idUsuario'] != $filas[$i]['id']) {
+        ?>
+        <div class="usuario">
                 <p><strong>Nombre: </strong><?php echo $filas[$i]['nombre'] ?></p>
                 <p><strong>Apellido:</strong> <?php echo $filas[$i]['apellido'] ?></p>
                 <p><strong>E-mail:</strong> <?php echo $filas[$i]['email'] ?></p>
@@ -88,6 +91,10 @@ if (isset($_POST['rol']) && $_POST['rol'] != "") {
                     </select>
                 </div>
             </div>
+        <?php
+        }
+        ?>
+            
         <?php
         }
 
