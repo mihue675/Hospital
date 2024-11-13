@@ -157,7 +157,7 @@ if (isset($_POST['btnDarDeBaja'])) {
         </div>
 
         <div>
-            <button type="button" onclick="window.location.href = './reporte.php'" class="btn-alta">Informe de estado</button>
+            <button style="<?php if ($_SESSION['id_rol'] != 1) echo "display: none;" ?>" type="button" onclick="window.location.href = './reporte.php'" class="btn-alta">Informe de estado</button>
         </div>
     </div>
 

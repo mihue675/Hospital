@@ -186,7 +186,7 @@ if (isset($_POST['tecnico']) && $_POST['tecnico'] != "") {
         ?>
             <div class="mantenimiento" data-tecnico="<?php echo ($filas[$i]['id_tecnico']); ?>" data-vencimiento="<?php echo $filas[$i]['fecha'] ?>" data-tecnico="<?php echo $filas[$i]['id_tecnico'] ?>" data-tipo=<?php echo $filas[$i]['tipo'] ?>>
                 <p><strong>Equipo: </strong><?php print_r(ObtenerEquipoPorId($filas[$i]['id_equipo'])['nombre'])  ?></p>
-                <?php if ($filas[$i]['fecha'] != "0000-00-00" && $filas[$i]['fecha']) { ?><p><strong>Próximo mantenimiento: </strong> <?php echo $filas[$i]['fecha'] ?> </p> <?php } ?>
+                <?php if ($filas[$i]['fecha'] != "0000-00-00" && $filas[$i]['fecha']) { ?><p><strong>Próximo mantenimiento: </strong> <?php $newDate = date("d/m/Y", strtotime($filas[$i]['fecha'])); echo $newDate ?> </p> <?php } ?>
                 <p><strong>Tipo:</strong> <?php echo $filas[$i]['tipo'] ?></p>
                 <?php if ($filas[$i]['descripcion'] != "") { ?><p><strong>Descripción:</strong> <?php echo $filas[$i]['descripcion'] ?> </p> <?php } ?>
                 <div>

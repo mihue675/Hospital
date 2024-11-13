@@ -18,9 +18,10 @@ if (isset($_SESSION['idUsuario'])) {
 
 <?php
 require_once __DIR__ . "/../../../server/controller/auth.php";
-
+$result;
 if (isset($_POST['btnIniciarSesion']) && $_POST['txtEmail'] != "" && $_POST['txtContraseña'] != "") {
-    if (IniciarSesion($_POST['txtEmail'], $_POST['txtContraseña'])) {
+    $result = IniciarSesion($_POST['txtEmail'], $_POST['txtContraseña']);
+    if ($result == 1) {
         header("Location: ../../pages/equipos/index.php");
     }
 }
@@ -45,6 +46,11 @@ if (isset($_POST['btnIniciarSesion']) && $_POST['txtEmail'] != "" && $_POST['txt
                     <label for="txtContraseña">Contraseña:</label>
                     <input type="password" name="txtContraseña" id="txtContraseña" required />
                 </div>
+                <span style="display: none;<?php 
+                if($result == 0 && isset($_POST['btnIniciarSesion']) && $_POST['txtEmail'] != "" && $_POST['txtContraseña'] != "") {
+                    echo "display: block; color: red;";
+                }
+                ?>">Credenciales incorrectas</span>
                 <button type="submit" name="btnIniciarSesion" id="btnIniciarSesion" class="btn">Iniciar Sesión</button>
             </form>
         </div>
