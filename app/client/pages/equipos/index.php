@@ -149,11 +149,11 @@ if (isset($_POST['btnDarDeBaja'])) {
         </form>
 
         <div>
-            <button type="button" onclick="window.location.href = './alta.php'" class="btn-alta">Alta de equipo</button>
+            <button style="<?php if ($_SESSION['id_rol'] != 1) echo "display: none;" ?>" type="button" onclick="window.location.href = './alta.php'" class="btn-alta">Alta de equipo</button>
         </div>
 
         <div>
-            <button type="button" onclick="window.location.href = './alta-categoria.php'" class="btn-alta">Alta de categoria</button>
+            <button style="<?php if ($_SESSION['id_rol'] != 1) echo "display: none;" ?>" type="button" onclick="window.location.href = './alta-categoria.php'" class="btn-alta">Alta de categoria</button>
         </div>
 
         <div>
@@ -168,14 +168,14 @@ if (isset($_POST['btnDarDeBaja'])) {
             CambiarEstado($equipo['id'], 'Disponible');
             $fecha_actual = new DateTime();
             //como un equipo puede tener varios correctivos, por mas que borremos uno tenemos q fijarnos si le queda otro para reasignarle el estado.
-            if (TieneMantenimiento($equipo['id'], 'correctivo')) { 
+            if (TieneMantenimiento($equipo['id'], 'correctivo')) {
                 CambiarEstado($equipo['id'], 'En mantenimiento');
             }
-            
-                // si tiene algun mantenimiento preventivo que se cumpla hoy, lo ponemos en mantenimiento
+
+            // si tiene algun mantenimiento preventivo que se cumpla hoy, lo ponemos en mantenimiento
             if (TieneMantenimiento($equipo['id'], 'Preventivo')) {
                 $preventivo = ObtenerMantenimientosPorID_TIPO($equipo['id'], 'Preventivo');
-                $fecha_vencimiento = new DateTime($preventivo[0]['fecha']); 
+                $fecha_vencimiento = new DateTime($preventivo[0]['fecha']);
                 if ($fecha_actual >= $fecha_vencimiento) {
                     CambiarEstado($equipo['id'], 'En mantenimiento');
                 }
@@ -188,12 +188,12 @@ if (isset($_POST['btnDarDeBaja'])) {
                 $fecha_inicio = new DateTime($reserva['fecha_inicio']);
                 $fecha_fin = new DateTime($reserva['fecha_fin']);
                 $fecha_inicio_str = $fecha_inicio->format('Y-m-d');
-                $fecha_fin_str = $fecha_fin->format('Y-m-d');         
+                $fecha_fin_str = $fecha_fin->format('Y-m-d');
                 if ($fecha_actual >= $fecha_inicio && $fecha_actual <= $fecha_fin) {
                     CambiarEstado($equipo['id'], 'En uso');
                 }
             }
-            ?>
+        ?>
 
             <div class="equipo" data-categoria="<?php echo $equipo['id_categoria']; ?>">
                 <p class="p"><strong>Marca:</strong> <?php echo $equipo['marca']; ?></p>

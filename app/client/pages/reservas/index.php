@@ -29,7 +29,6 @@ if (!empty($_POST['txtEquipoReserva'])) {
 }
 
 if (isset($_POST['btnAsignar'])) {
-    echo "<script>alert('hola')</script>";
     $id_equipo = $_POST['txtEquipoReserva'];
     $fecha_inicio = $_POST['txtFechaInicio'];
     $fecha_fin = $_POST['txtFechaFin'];
