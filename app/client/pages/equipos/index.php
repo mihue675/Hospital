@@ -29,6 +29,8 @@ if (!isset($_SESSION['idUsuario'])) {
                     equipo.style.display = "none"; // Ocultar el equipo
                 }
             });
+
+            document.getElementById("inputBuscar").value = "";
         }
 
         function CambiarEstado(id, estado) {
@@ -111,6 +113,8 @@ if (!isset($_SESSION['idUsuario'])) {
                     equipo.style.display = "none"; // Ocultar el equipo
                 }
             });
+
+            document.getElementById("txtCategoria").value = "";
         }
     </script>
 </head>
