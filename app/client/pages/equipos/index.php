@@ -74,9 +74,7 @@ if (!isset($_SESSION['idUsuario'])) {
             };
             xhr.send("id=" + id + "&btnDarDeBaja=1"); // Enviar el id del equipo a eliminar.
         }
-    </script>
 
-    <script>
         function CambiarClassSegunEstado() {
             elementos = document.querySelectorAll("#estado")
             className = ""
@@ -100,6 +98,19 @@ if (!isset($_SESSION['idUsuario'])) {
                 elemento.querySelector("span").className = className
             });
 
+        }
+
+        function BuscarEquipo($equipo) {
+            const equipos = document.getElementsByClassName("equipo")
+            let array = [...equipos]
+
+            array.forEach(equipo => {
+                if ($equipo === "" || equipo.getAttribute("data-nombre").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').includes($equipo.toLowerCase())) {
+                    equipo.style.display = "block"; // Mostrar el equipo
+                } else {
+                    equipo.style.display = "none"; // Ocultar el equipo
+                }
+            });
         }
     </script>
 </head>
@@ -148,6 +159,10 @@ if (isset($_POST['btnDarDeBaja'])) {
             </select>
         </form>
 
+        <div class="contenedor-buscar">
+            <input type="text" placeholder="Buscar 🔎" name="inputBuscar" id="inputBuscar" oninput="BuscarEquipo(this.value)">
+        </div>
+
         <div>
             <button style="<?php if ($_SESSION['id_rol'] != 1) echo "display: none;" ?>" type="button" onclick="window.location.href = './alta.php'" class="btn-alta">Alta de equipo</button>
         </div>
@@ -195,7 +210,7 @@ if (isset($_POST['btnDarDeBaja'])) {
             }
         ?>
 
-            <div class="equipo" data-categoria="<?php echo $equipo['id_categoria']; ?>">
+            <div class="equipo" data-categoria="<?php echo $equipo['id_categoria']; ?>" data-nombre="<?php echo $equipo['nombre']; ?>">
                 <p class="p"><strong>Marca:</strong> <?php echo $equipo['marca']; ?></p>
                 <p class="p"><strong>Nombre:</strong> <?php echo $equipo['nombre']; ?></p>
                 <p class="p"><strong>Modelo:</strong> <?php echo $equipo['modelo']; ?></p>

@@ -41,6 +41,23 @@ select {
     margin-top: 3em;
 }
 
+.contenedor-buscar > input {
+    background-color: white;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: solid 2px #00796B;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+.contenedor-buscar > input:focus {
+    background-color: rgba(255, 255, 255, 0.516);
+    padding: 10px 12px;
+    font-size: 16px;
+    border: solid 2px #00796B;
+    outline: none;
+}
+
 .contenedor-filtros {
     display: flex;
     flex-wrap: wrap; /* Permite que los equipos pasen a la siguiente línea si no caben en una */
